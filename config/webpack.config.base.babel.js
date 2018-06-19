@@ -1,4 +1,8 @@
+import webpack from 'webpack';
 import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   module: {
@@ -9,6 +13,14 @@ const config = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
@@ -18,10 +30,19 @@ const config = {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    open: true,
-    port: 9000
-  }
+    port: 3000
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+      inject: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'style.css'
+    })
+  ]
 };
 
 export default config;
-

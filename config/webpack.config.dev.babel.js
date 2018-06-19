@@ -2,9 +2,12 @@ import webpack from 'webpack';
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const config = {
+  entry: path.resolve(__dirname, '..', 'src', 'index.js'),
+  output: {
+    path: path.resolve(__dirname, '..', 'dist'),
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
@@ -17,7 +20,7 @@ const config = {
       {
         test: /\.scss$/,
         use: [
-          process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           'sass-loader'
         ]
@@ -34,14 +37,9 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-      inject: true
+      template: './src/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'style.css'
-    })
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
 

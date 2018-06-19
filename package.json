@@ -7,8 +7,8 @@
   "author": "Uladzimir Hanchar",
   "license": "MIT",
   "scripts": {
-    "start:dev": "webpack-dev-server --mode development --config config/webpack.config.base.babel.js",
-    "build": "NODE_ENV=production webpack --mode production --config config/webpack.config.base.babel.js"
+    "start:dev": "webpack-dev-server --mode development --config config/webpack.config.dev.babel.js",
+    "build": "webpack --mode production --config config/webpack.config.prod.babel.js"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-beta.51",
@@ -40,6 +40,9 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
-    "flow-bin": "^0.74.0"
+    "flow-bin": "^0.74.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack-merge": "^4.1.3"
   }
 }

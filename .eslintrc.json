@@ -15,6 +15,11 @@
         "semi": 2,
         "no-console": 0,
         "react/jsx-filename-extension": [ 0, { "extensions": [".js", ".jsx"] }],
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
+        "jsx-a11y/anchor-is-valid": [ 0, {
+          "components": [ "Link" ],
+          "specialLink": [ "to" ]
+        }],
         "comma-dangle": ["error", "never"],
         "jsx-quotes": ["error", "prefer-single"]
     }

@@ -8,6 +8,7 @@ const config = {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: 'bundle.js'
   },
+  target: 'web',
   module: {
     rules: [
       {
@@ -18,12 +19,16 @@ const config = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /(\.css|\.scss)$/,
         use: [
           'style-loader',
           'css-loader',
           'sass-loader'
         ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },

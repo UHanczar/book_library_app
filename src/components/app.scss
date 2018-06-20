@@ -1,0 +1,13 @@
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  aling-items: center;
+  min-height: 100vh;
+}

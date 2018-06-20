@@ -1,0 +1,29 @@
+.sidebar__container {
+  display: none;
+
+  @media only screen and (min-width: 768px) {
+    display: flex;
+    width: 300px;
+    overflow-y: auto;
+    border-right: 1px solid black;
+
+    .sidenav.sidenav__custom {
+      margin-top: 0;
+      width: 100%;
+
+      .sidenav__custom-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        padding: 5px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #EEEBEB;
+        }
+      }
+    }
+  }
+}

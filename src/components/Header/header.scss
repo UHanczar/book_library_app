@@ -4,7 +4,30 @@
   .brand-logo {
     margin-left: 30px;
     @media only screen and (max-width: 992px) {
-      left: 0;
+      left: 30px;
+    }
+
+    .brand-logo-container {
+      height: 64px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      div {
+        img.logo-img {
+          width: 35px;
+          height: auto;
+          border-radius: 50%;
+          margin: 20px 10px 0 0;
+          @media only screen and (max-width: 600px) {
+            margin: 10px 10px 0 0;
+          }
+        }
+      }
+
+      p.logo-text {
+        font-size: 20px;
+      }
     }
   }
 }

@@ -4,5 +4,71 @@
   justify-content: flex-start;
   align-items: stretch;
   overflow-y: visible;
-  margin-left: 300px;
+  overflow-x: hidden;
+
+  @media only screen and (min-width: 768px) {
+    margin-left: 300px;
+  }
+
+  .sidenav__container {
+    min-width: 80%;
+    margin-left: -80%;
+
+    .item__container-img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .main__route-container {
+    flex: 1;
+  }
+
+  .filterbar__container {
+    width: 300px;
+    margin-right: -300px;
+  }
+
+  .sidebar__opened {
+    animation-name: sidebarOpen;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  .filterbar__opened {
+    animation-name: filterbarOpen;
+    animation-duration: .3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  .filterbar__closed {
+    margin-right: -300px;
+  }
+
+  .sidebar__closed {
+    margin-left: -80%;
+  }
+
+  @keyframes sidebarOpen {
+      0%   { margin-left: -80%; }
+      100% { margin-left: 0; }
+  }
+
+  @keyframes filterbarOpen {
+      0%   { margin-right: -300px; }
+      100% { margin-right: 0; }
+  }
+
+  .category-link {
+    color: white;
+    text-decoration: none;
+  }
 }

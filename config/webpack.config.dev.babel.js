@@ -33,7 +33,8 @@ const config = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, '..', 'dist'),
+    publicPath: '/',
     compress: true,
     historyApiFallback: true,
     hot: true,
@@ -42,7 +43,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: path.resolve(__dirname, '..', 'dist', 'images', 'favicon.ico')
     }),
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -1,3 +1,6 @@
+$textColor: #464342;
+$fontSize: 16px;
+
 .sidenav__custom-item {
   display: flex;
   justify-content: flex-start;
@@ -6,6 +9,26 @@
   height: 50px;
   padding: 5px 15px;
   cursor: pointer;
+
+  .item__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+
+    img.item__container-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+
+    p.item__container-text {
+      color: $textColor;
+      font-size: $fontSize;
+      align-self: center;
+    }
+  }
 
   &:hover, &:active {
     background-color: #eeebeb;

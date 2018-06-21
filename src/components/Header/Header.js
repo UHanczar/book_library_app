@@ -5,10 +5,15 @@ import './header.scss';
 
 const Header = () => (
   <div className='header__container'>
-    <nav className='navbar-fixed'>
+    <nav className='navbar-fixed teal accent-3'>
       <div className='nav-wrapper'>
         <Link to='/' className='brand-logo'>
-          GKB
+          <div className='brand-logo-container'>
+            <div>
+              <img className='logo-img' src='./images/logo.png' alt='logo' />
+            </div>
+            <p className='logo-text'>GKB</p>
+          </div>
         </Link>
         <ul className='right'>
           <li>

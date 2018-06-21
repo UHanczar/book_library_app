@@ -33,6 +33,90 @@ const fakeCategories = [
   {
     categoryName: 'React',
     categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'JavaScript',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'CSS',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'HTML',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Front-end',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Single Page Applications',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Angular',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'React',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'JavaScript',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'CSS',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'HTML',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Front-end',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Single Page Applications',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Angular',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'React',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'JavaScript',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'CSS',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'HTML',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Front-end',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Single Page Applications',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'Angular',
+    categoryImg: 'account_circle'
+  },
+  {
+    categoryName: 'React',
+    categoryImg: 'account_circle'
   }
 ];
 

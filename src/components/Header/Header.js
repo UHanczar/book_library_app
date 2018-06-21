@@ -5,7 +5,7 @@ import './header.scss';
 
 const Header = () => (
   <div className='header__container'>
-    <nav>
+    <nav className='navbar-fixed'>
       <div className='nav-wrapper'>
         <Link to='/' className='brand-logo'>
           GKB

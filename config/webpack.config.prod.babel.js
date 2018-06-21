@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 
 const config = {
   entry: path.resolve(__dirname, '..', 'src', 'index.js'),
@@ -66,7 +67,8 @@ const config = {
     new OptimizeCssAssetsPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css'
-    })
+    }),
+    new CleanWebpackPlugin('dist', {})
   ]
 };
 

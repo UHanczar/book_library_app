@@ -21,6 +21,7 @@
           "specialLink": [ "to" ]
         }],
         "comma-dangle": ["error", "never"],
-        "jsx-quotes": ["error", "prefer-single"]
+        "jsx-quotes": ["error", "prefer-single"],
+        "linebreak-style": [0, "unix"]
     }
 }

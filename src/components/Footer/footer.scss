@@ -1,4 +1,7 @@
-.footer_container {
-  background-color: blue;
+.footer__container {
   height: auto;
+  
+  .page-footer {
+    padding-top: 0;
+  }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Link } from 'react-router-dom';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import uniqid from 'uniqid';
@@ -7,8 +8,9 @@ import debounce from 'debounce';
 import './main.scss';
 
 import SideBar from '../Sidebar/Sidebar';
-import Login from '../Login/Login';
-import Filter from '../Filter/Filter';
+import Login from '../Login/LoginContainer';
+import DateFilter from '../DateFilter/DateFilter';
+import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
 
 import fakeCategories from '../../fakeData/fakeCategories';
@@ -82,6 +84,7 @@ class Main extends Component {
   }
 
   render() {
+    const { filterByDate, filterByRate } = this.props;
     const { categorySidebarOpened, filterSidebarOpened } = this.state;
 
     return (
@@ -120,6 +123,7 @@ class Main extends Component {
           onClick={() => this.hideSidebars()}
         >
           <Switch>
+            <Route exact path='/login' component={Login} />
             <Route
               exact
               path='/'
@@ -129,7 +133,6 @@ class Main extends Component {
                   toggleFilterBar={this.toggleFilterBar}
                 />)}
             />
-            <Route exact path='/login' component={Login} />
           </Switch>
         </div>
         <div
@@ -144,13 +147,15 @@ class Main extends Component {
             <h5 className='filters-title'>
               Filters
             </h5>
-            <Filter
+            <DateFilter
               filterName='Filter by date'
               identifier='dateFilter'
+              filterByDate={filterByDate}
             />
-            <Filter
+            <RateFilter
               filterName='Filter by rating'
               identifier='popularityFilter'
+              filterByRate={filterByRate}
             />
           </SideNav>
         </div>
@@ -158,5 +163,10 @@ class Main extends Component {
     );
   }
 }
+
+Main.propTypes = {
+  filterByDate: PropTypes.func.isRequired,
+  filterByRate: PropTypes.func.isRequired
+};
 
 export default Main;

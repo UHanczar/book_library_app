@@ -3,17 +3,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './filter.scss';
+import './dateFilter.scss';
 
-const Filter = (props: {
+const DateFilter = (props: {
   filterName: string,
   identifier: string,
+  filterByDate: Function
 }) => (
   <div className='filter__item-container'>
     <div className='filter__item-container-title'>
       {props.filterName}
     </div>
-    <div className='switch filter__item-container-text'>
+    <div className='switch filter__item-container-text' onChange={props.filterByDate}>
       <label htmlFor={props.identifier}>
         Off
         <input type='checkbox' id={props.identifier} name={props.identifier} />
@@ -24,9 +25,10 @@ const Filter = (props: {
   </div>
 );
 
-Filter.propTypes = {
+DateFilter.propTypes = {
   filterName: PropTypes.string.isRequired,
-  identifier: PropTypes.string.isRequired
+  identifier: PropTypes.string.isRequired,
+  filterByDate: PropTypes.func.isRequired
 };
 
-export default Filter;
+export default DateFilter;

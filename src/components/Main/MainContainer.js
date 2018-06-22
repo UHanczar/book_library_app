@@ -1,11 +1,12 @@
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Filter from './Filter';
+import Main from './Main';
 
 import { filterByDate, filterByRate } from '../../actions/filterActions';
 
-// const mapStateToProps = ({ newItemValue }) => ({ value: newItemValue });
+// const mapStateToProps = ({ bookList }) => ({ bookList });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -14,4 +15,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Filter);
+export default withRouter(connect(null, mapDispatchToProps)(Main));

@@ -1,3 +1,7 @@
+// auth actions
+export const LOGIN_USER = 'LOGIN_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
+
 // bookListActions
 export const FETCH_BOOK_LIST = 'FETCH_BOOK_LIST';
 

@@ -8,6 +8,8 @@ import './main.scss';
 
 import SideBar from '../Sidebar/Sidebar';
 import Login from '../Login/Login';
+import Filter from '../Filter/Filter';
+import BookList from '../BookList/BookList';
 
 import fakeCategories from '../../fakeData/fakeCategories';
 
@@ -21,6 +23,8 @@ class Main extends Component {
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.toggleFilterBar = this.toggleFilterBar.bind(this);
   }
 
   componentDidMount() {
@@ -85,16 +89,16 @@ class Main extends Component {
         <SideBar />
         <div
           className={categorySidebarOpened ? 'sidenav__container sidebar__opened' : 'sidenav__container sidebar__closed'}
-          style={{ background: '#2c3e50', color: '#FFF' }}
+          style={{ background: '#2c3e50', color: '#ffffff' }}
         >
           <SideNav
             highlightColor='#E91E63'
             highlightBgColor='#00bcd4'
             hoverColor='#ffffff'
           >
-            <Nav id='dashboard'>
-              <NavText>Categories</NavText>
-            </Nav>
+            <h5 className='sidebar-title'>
+              Categories
+            </h5>
             {fakeCategories.map(category => (
               <Link
                 to={`/category/${category.categoryPathName}`}
@@ -115,33 +119,39 @@ class Main extends Component {
           className='main__route-container'
           onClick={() => this.hideSidebars()}
         >
-          <div className='main__route-container-header'>
-            <div
-              className='btn-flat sidebar-toggle'
-              onClick={() => this.toggleSidebar()}
-            ><i className="material-icons">menu</i></div>
-            <a
-              className='btn-flat filterbar-toggle'
-              onClick={() => this.toggleFilterBar()}
-            >Show Filter Bar</a>
-          </div>
           <Switch>
-            <Route exact path='/' component={() => (<div>Main</div>)} />
+            <Route
+              exact
+              path='/'
+              component={() => (
+                <BookList
+                  toggleSidebar={this.toggleSidebar}
+                  toggleFilterBar={this.toggleFilterBar}
+                />)}
+            />
             <Route exact path='/login' component={Login} />
           </Switch>
         </div>
         <div
           className={filterSidebarOpened ? 'filterbar__container filterbar__opened' : 'filterbar__container filterbar__closed'}
-          style={{ background: '#2c3e50', color: '#FFF' }}
+          style={{ background: '#eceff1', color: '#464342' }}
         >
           <SideNav
-            highlightColor='#E91E63'
-            highlightBgColor='#00bcd4'
-            hoverColor='#ffffff'
+            highlightColor='#464342'
+            highlightBgColor='#cfd2d6'
+            hoverColor='#464342'
           >
-            <Nav id='dashboard'>
-              <NavText>Categories</NavText>
-            </Nav>
+            <h5 className='filters-title'>
+              Filters
+            </h5>
+            <Filter
+              filterName='Filter by date'
+              identifier='dateFilter'
+            />
+            <Filter
+              filterName='Filter by rating'
+              identifier='popularityFilter'
+            />
           </SideNav>
         </div>
       </div>

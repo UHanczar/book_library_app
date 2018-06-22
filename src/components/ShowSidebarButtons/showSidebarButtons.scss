@@ -1,0 +1,24 @@
+.main__route-container-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media only screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+
+  .sidebar-toggle {
+    @media only screen and (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  .filterbar-toggle {
+    margin-right: 20px;
+
+    &:hover, &:active {
+      background-color: #EDEAEA;
+    }
+  }
+}

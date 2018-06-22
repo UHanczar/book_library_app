@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 import './header.scss';
 
 const Header = () => (
   <div className='header__container'>
-    <nav className='navbar-fixed teal accent-3'>
+    <nav className='navbar-fixed light-blue lighten-2'>
       <div className='nav-wrapper'>
         <Link to='/' className='brand-logo'>
           <div className='brand-logo-container'>
@@ -30,4 +30,4 @@ const Header = () => (
   </div>
 );
 
-  export default Header;
+export default Header;

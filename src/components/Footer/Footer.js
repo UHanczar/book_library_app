@@ -4,11 +4,10 @@ import './footer.scss';
 
 const Footer = () => (
   <div className='footer__container'>
-    <footer className='page-footer teal accent-3'>
+    <footer className='page-footer light-blue lighten-2'>
       <div className='footer-copyright'>
         <div className='container'>
-        © 2018 Copyright Text
-        <a className='grey-text text-lighten-4 right' href='#!'>More Links</a>
+          © 2018 Copyright Text
         </div>
       </div>
     </footer>

@@ -1,0 +1,22 @@
+.filter__item-container {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 30px;
+
+  .filter__item-container-title {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 40%;
+  }
+
+  .switch label input[type=checkbox]:checked+.lever {
+    background-color: #42a5f5;
+  }
+
+  .switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #1976d2;
+  }
+}

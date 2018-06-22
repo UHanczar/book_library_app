@@ -32,7 +32,7 @@ class Main extends Component {
   }
 
   updateDimensions() {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 767) {
       this.setState({
         categorySidebarOpened: false
       });
@@ -61,6 +61,20 @@ class Main extends Component {
     this.setState({
       filterSidebarOpened: !this.state.filterSidebarOpened
     });
+  }
+
+  hideSidebars() {
+    if (this.state.categorySidebarOpened) {
+      this.setState({
+        categorySidebarOpened: false
+      });
+    }
+
+    if (this.state.filterSidebarOpened) {
+      this.setState({
+        filterSidebarOpened: false
+      });
+    }
   }
 
   render() {
@@ -97,7 +111,20 @@ class Main extends Component {
             ))}
           </SideNav>
         </div>
-        <div className='main__route-container' onClick={() => this.toggleFilterBar()}>
+        <div
+          className='main__route-container'
+          onClick={() => this.hideSidebars()}
+        >
+          <div className='main__route-container-header'>
+            <div
+              className='btn-flat sidebar-toggle'
+              onClick={() => this.toggleSidebar()}
+            ><i className="material-icons">menu</i></div>
+            <a
+              className='btn-flat filterbar-toggle'
+              onClick={() => this.toggleFilterBar()}
+            >Show Filter Bar</a>
+          </div>
           <Switch>
             <Route exact path='/' component={() => (<div>Main</div>)} />
             <Route exact path='/login' component={Login} />

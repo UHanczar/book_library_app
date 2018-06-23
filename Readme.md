@@ -32,10 +32,7 @@ For starting production server run:
 ```sh
 $ yar start:prod
 ```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
+
 ### Backend server
 Also you need backend server. You can get it here:
 

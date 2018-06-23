@@ -66,7 +66,6 @@ const config = {
         minifyURLs: true
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new OptimizeCssAssetsPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css'

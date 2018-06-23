@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { flashMessageType } from 'redux-flash';
@@ -6,21 +8,27 @@ import './flashMessageslist.scss';
 
 import FlashMessage from '../FlashMessage/FlashMessage';
 
-const FlashMessagesList = ({ flash }) => {
+const FlashMessagesList = (props: {
+  flash: Object,
+  removeMessage: Function
+}) => {
   return (
     <div className='flash__messages-container'>
-      {flash && flash.map(item => (
+      {props.flash && props.flash.map(item => (
         <FlashMessage
           key={item.id}
+          id={item.id}
           message={item.message}
-          bgColor={item.isError ? '#ffab91' : '#1de9b6'}
+          bgColor={item.isError ? '#f4511e' : '#1de9b6'}
+          removeMessage={props.removeMessage}
         />))}
     </div>
   );
 };
 
 FlashMessagesList.propTypes = {
-  flash: PropTypes.arrayOf(flashMessageType)
+  flash: PropTypes.arrayOf(flashMessageType),
+  removeMessage: PropTypes.func.isRequired
 };
 
 export default FlashMessagesList;

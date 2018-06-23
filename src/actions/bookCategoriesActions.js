@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { flashMessage, flashErrorMessage } from 'redux-flash';
+import { flashErrorMessage } from 'redux-flash';
 
 import { FETCH_BOOK_CATEGORIES } from './types';
 import { api } from '../../config/config';
@@ -14,7 +14,7 @@ export const fetchBookCategories = () => async (dispatch) => {
       });
     }
   } catch (error) {
-    const errorMessage = flashMessage('Book categories was not loaded.');
+    const errorMessage = flashErrorMessage('Book categories was not loaded.');
     dispatch(errorMessage);
   }
 };

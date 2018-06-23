@@ -2,6 +2,9 @@
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
+// bookCategoriesActions
+export const FETCH_BOOK_CATEGORIES = 'FETCH_BOOK_CATEGORIES';
+
 // bookListActions
 export const FETCH_BOOK_LIST = 'FETCH_BOOK_LIST';
 

@@ -7,13 +7,11 @@ import debounce from 'debounce';
 
 import './main.scss';
 
-import SideBar from '../Sidebar/Sidebar';
+import SideBar from '../Sidebar/SidebarContainer';
 import Login from '../Login/LoginContainer';
 import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
-
-import fakeCategories from '../../fakeData/fakeCategories';
 
 class Main extends Component {
   constructor(props) {
@@ -31,6 +29,7 @@ class Main extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', debounce(this.updateDimensions));
+    this.props.fetchBookCategories();
   }
 
   componentWillUnmount() {
@@ -84,7 +83,7 @@ class Main extends Component {
   }
 
   render() {
-    const { filterByDate, filterByRate } = this.props;
+    const { bookCategories, filterByDate, filterByRate } = this.props;
     const { categorySidebarOpened, filterSidebarOpened } = this.state;
 
     return (
@@ -102,7 +101,7 @@ class Main extends Component {
             <h5 className='sidebar-title'>
               Categories
             </h5>
-            {fakeCategories.map(category => (
+            {bookCategories && bookCategories.map(category => (
               <Link
                 to={`/category/${category.categoryPathName}`}
                 className='category-link'
@@ -110,7 +109,7 @@ class Main extends Component {
               >
                 <Nav id={category.categoryPathName}>
                   <NavIcon>
-                    <img className='item__container-img' src={`./${category.categoryImg}`} alt='category-item' />
+                    <img className='item__container-img' src={`images/category/${category.categoryPathName}.svg`} alt='category-item' />
                   </NavIcon>
                   <NavText>{category.categoryName}</NavText>
                 </Nav>
@@ -164,9 +163,16 @@ class Main extends Component {
   }
 }
 
+const categoryInterface = PropTypes.shape({
+  categoryName: PropTypes.string,
+  categoryPathName: PropTypes.string
+});
+
 Main.propTypes = {
   filterByDate: PropTypes.func.isRequired,
-  filterByRate: PropTypes.func.isRequired
+  filterByRate: PropTypes.func.isRequired,
+  fetchBookCategories: PropTypes.func.isRequired,
+  bookCategories: PropTypes.arrayOf(categoryInterface)
 };
 
 export default Main;

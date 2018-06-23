@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 
 import Main from './Main';
 
+import { fetchBookCategories } from '../../actions/bookCategoriesActions';
 import { filterByDate, filterByRate } from '../../actions/filterActions';
 
-// const mapStateToProps = ({ bookList }) => ({ bookList });
+const mapStateToProps = ({ bookCategories }) => ({ bookCategories });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     filterByDate,
-    filterByRate
+    filterByRate,
+    fetchBookCategories
   }, dispatch);
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

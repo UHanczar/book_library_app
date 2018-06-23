@@ -1,12 +1,13 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import { middleware as flashMiddleware } from 'redux-flash';
 
 import rootReducer from '../reducers/index';
 
 const initialState = {};
 
-let middleware = [thunk];
+let middleware = [thunk, flashMiddleware()];
 
 if (process.env.NODE_ENV !== 'production') {
   middleware = [...middleware, logger];

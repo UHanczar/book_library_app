@@ -1,0 +1,12 @@
+.flash__messages-container {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 15;
+}

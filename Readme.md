@@ -30,7 +30,7 @@ $ yarn build
 
 For starting production server run:
 ```sh
-$ yar start:prod
+$ yarn start:prod
 ```
 
 ### Backend server

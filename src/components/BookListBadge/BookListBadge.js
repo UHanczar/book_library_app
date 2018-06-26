@@ -8,7 +8,14 @@ import uniqid from 'uniqid';
 import './book-list-badge.scss';
 
 const BookListBadge = (props: {
-  bookList: Array<String | Array<String>>
+  bookList: Array<{
+    pathname: string,
+    _id: string,
+    name: string,
+    authors: Array<String>,
+    publisher: string,
+    year: string
+  }>
 }) => (
   <div className='badge__container'>
     <div className='collection'>

@@ -6,23 +6,30 @@ import PropTypes from 'prop-types';
 import './bookList.scss';
 
 import ShowSidebarButtons from '../ShowSidebarButtons/ShowSidebarButtons';
-import BookListItem from '../BookListItem/BookListItem';
+import BookListItemCard from '../BookListItemCard/BookListItemCard';
+import BookListBadge from '../BookListBadge/BookListBadge';
 
 const BookList = (props: {
   toggleSidebar: Function,
   toggleFilterBar: Function,
-  bookList: Object
+  toggleBookListTableView: Function,
+  bookList: Object,
+  showAsTable: Boolean
 }) => {
   return (
     <div className='book__list-container'>
       <ShowSidebarButtons
         toggleSidebar={props.toggleSidebar}
         toggleFilterBar={props.toggleFilterBar}
+        toggleBookListTableView={props.toggleBookListTableView}
+        showAsTable={props.showAsTable}
       />
-      <div className='book__item-container'>
-        {props.bookList && props.bookList.map(item => (
-          <BookListItem key={item._id} item={item} />
-        ))}
+      <div className={props.showAsTable ? 'book__item-container show-table' : 'book__item-container'}>
+        {props.bookList && props.showAsTable ? (
+          <BookListBadge bookList={props.bookList} />
+        ) : (props.bookList && props.bookList.map(item => (
+            (<BookListItemCard key={item._id} item={item} />)
+        )))}
       </div>
     </div>
   );
@@ -41,7 +48,9 @@ const bookInterface = PropTypes.shape({
 BookList.propTypes = {
   toggleSidebar: PropTypes.func.isRequired,
   toggleFilterBar: PropTypes.func.isRequired,
-  bookList: PropTypes.arrayOf(bookInterface)
+  toggleBookListTableView: PropTypes.func.isRequired,
+  bookList: PropTypes.arrayOf(bookInterface),
+  showAsTable: PropTypes.bool.isRequired
 };
 
 export default BookList;

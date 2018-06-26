@@ -7,7 +7,9 @@ import './showSidebarButtons.scss';
 
 const ShowSidebarButtons = (props: {
   toggleSidebar: Function,
-  toggleFilterBar: Function
+  toggleFilterBar: Function,
+  toggleBookListTableView: Function,
+  showAsTable: Boolean
 }) => (
   <div className='main__route-container-header'>
     <div
@@ -16,6 +18,12 @@ const ShowSidebarButtons = (props: {
     >
       <i className='material-icons'>menu</i>
     </div>
+    <a
+      className='btn-flat filterbar-toggle'
+      onClick={props.toggleBookListTableView}
+    >
+      Show as {props.showAsTable ? 'Cards' : 'List'}
+    </a>
     <a
       className='btn-flat filterbar-toggle'
       onClick={() => props.toggleFilterBar()}
@@ -27,7 +35,9 @@ const ShowSidebarButtons = (props: {
 
 ShowSidebarButtons.propTypes = {
   toggleSidebar: PropTypes.func.isRequired,
-  toggleFilterBar: PropTypes.func.isRequired
+  toggleFilterBar: PropTypes.func.isRequired,
+  toggleBookListTableView: PropTypes.func.isRequired,
+  showAsTable: PropTypes.bool.isRequired
 };
 
 export default ShowSidebarButtons;

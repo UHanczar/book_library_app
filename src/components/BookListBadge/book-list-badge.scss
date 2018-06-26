@@ -1,0 +1,65 @@
+.badge__container {
+  width: 95%;
+
+  .collection-item.item-badge {
+    display: flex;
+    color: #464342;
+
+    .collection__image {
+      width: 30px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .collection__authors {
+      width: 20%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+      color: #837979;
+      @media only screen and (max-width: 480px) {
+        display: none;
+      }
+    }
+
+    .collection__title {
+      width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+    }
+
+    .collection__publisher {
+      width: 10%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .collection__year {
+      width: 10%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .collection__rating {
+      width: 10%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 20px;
+      margin-left: auto;
+    }
+  }
+}

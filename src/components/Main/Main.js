@@ -30,6 +30,7 @@ class Main extends Component {
   componentDidMount() {
     window.addEventListener('resize', debounce(this.updateDimensions));
     this.props.fetchBookCategories();
+    this.props.fetchBookList();
   }
 
   componentWillUnmount() {
@@ -83,7 +84,7 @@ class Main extends Component {
   }
 
   render() {
-    const { bookCategories, filterByDate, filterByRate } = this.props;
+    const { bookCategories, bookList, filterByDate, filterByRate } = this.props;
     const { categorySidebarOpened, filterSidebarOpened } = this.state;
 
     return (
@@ -128,6 +129,7 @@ class Main extends Component {
               path='/'
               component={() => (
                 <BookList
+                  bookList={bookList}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
                 />)}
@@ -168,11 +170,23 @@ const categoryInterface = PropTypes.shape({
   categoryPathName: PropTypes.string
 });
 
+const bookInterface = PropTypes.shape({
+  authors: PropTypes.arrayOf(PropTypes.string),
+  name: PropTypes.string,
+  pathName: PropTypes.string,
+  publisher: PropTypes.string,
+  year: PropTypes.string,
+  pages: PropTypes.string,
+  description: PropTypes.string
+});
+
 Main.propTypes = {
   filterByDate: PropTypes.func.isRequired,
   filterByRate: PropTypes.func.isRequired,
   fetchBookCategories: PropTypes.func.isRequired,
-  bookCategories: PropTypes.arrayOf(categoryInterface)
+  fetchBookList: PropTypes.func.isRequired,
+  bookCategories: PropTypes.arrayOf(categoryInterface),
+  bookList: PropTypes.arrayOf(bookInterface)
 };
 
 export default Main;

@@ -26,6 +26,7 @@
         "jsx-quotes": ["error", "prefer-single"],
         "linebreak-style": [0, "unix"],
         "arrow-body-style": [0, "always"],
-        "function-paren-newline": [0, "never"]
+        "function-paren-newline": [0, "never"],
+        "no-underscore-dangle": 0
     }
 }

@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 import './bookList.scss';
 
 import ShowSidebarButtons from '../ShowSidebarButtons/ShowSidebarButtons';
+import BookListItem from '../BookListItem/BookListItem';
 
 const BookList = (props: {
   toggleSidebar: Function,
-  toggleFilterBar: Function
+  toggleFilterBar: Function,
+  bookList: Object
 }) => {
   return (
     <div className='book__list-container'>
@@ -17,29 +19,29 @@ const BookList = (props: {
         toggleSidebar={props.toggleSidebar}
         toggleFilterBar={props.toggleFilterBar}
       />
-      {/* <div style={{ display: 'flex' }}>
+      <div className='book__item-container'>
         {props.bookList && props.bookList.map(item => (
-          <div className='card' style={{ width: '15%', marginRight: '5%' }}>
-          <div className="card-image">
-            <img src='images/items/ninja.png' />
-            <span className="card-title">Card Title</span>
-          </div>
-          <div className='card-content'>
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-            <div className='card-action'>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
+          <BookListItem key={item._id} item={item} />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };
 
+const bookInterface = PropTypes.shape({
+  authors: PropTypes.arrayOf(PropTypes.string),
+  name: PropTypes.string,
+  pathName: PropTypes.string,
+  publisher: PropTypes.string,
+  year: PropTypes.string,
+  pages: PropTypes.string,
+  description: PropTypes.string
+});
+
 BookList.propTypes = {
   toggleSidebar: PropTypes.func.isRequired,
-  toggleFilterBar: PropTypes.func.isRequired
+  toggleFilterBar: PropTypes.func.isRequired,
+  bookList: PropTypes.arrayOf(bookInterface)
 };
 
 export default BookList;

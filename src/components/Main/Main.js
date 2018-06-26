@@ -12,6 +12,7 @@ import Login from '../Login/LoginContainer';
 import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
+import BookItem from '../BookItem/BookItem';
 
 class Main extends Component {
   constructor(props) {
@@ -19,12 +20,14 @@ class Main extends Component {
 
     this.state = {
       categorySidebarOpened: false,
-      filterSidebarOpened: false
+      filterSidebarOpened: false,
+      showAsTable: false
     };
 
     this.updateDimensions = this.updateDimensions.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleFilterBar = this.toggleFilterBar.bind(this);
+    this.toggleBookListTableView = this.toggleBookListTableView.bind(this);
   }
 
   componentDidMount() {
@@ -83,6 +86,12 @@ class Main extends Component {
     }
   }
 
+  toggleBookListTableView() {
+    this.setState({
+      showAsTable: !this.state.showAsTable
+    });
+  }
+
   render() {
     const {
       bookCategories,
@@ -92,7 +101,8 @@ class Main extends Component {
     } = this.props;
     const {
       categorySidebarOpened,
-      filterSidebarOpened
+      filterSidebarOpened,
+      showAsTable
     } = this.state;
 
     return (
@@ -140,8 +150,11 @@ class Main extends Component {
                   bookList={bookList}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
+                  toggleBookListTableView={this.toggleBookListTableView}
+                  showAsTable={showAsTable}
                 />)}
             />
+            <Route exact path='/book/:id' component={() => <BookItem />} />
           </Switch>
         </div>
         <div

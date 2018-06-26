@@ -12,7 +12,7 @@ const BookListItem = (props: {
 }) => (
   <Link to={`/book/${props.item._id}`} className='card card-item'>
     <div className='card-image'>
-      <img src='images/items/ninja.png' alt={props.item.pathname} />
+      <img src={`images/items/${props.item.pathName}.png`} alt={props.item.pathname} />
       <span className='card-title'>Card Title</span>
     </div>
     <div className='card-content'>
@@ -28,7 +28,7 @@ const BookListItem = (props: {
 
 BookListItem.propTypes = {
   item: PropTypes.shape({
-    pathname: PropTypes.string,
+    pathName: PropTypes.string,
     name: PropTypes.string,
     authors: PropTypes.arrayOf(PropTypes.string),
     _id: PropTypes.string

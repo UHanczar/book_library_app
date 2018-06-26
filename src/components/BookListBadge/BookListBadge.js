@@ -9,7 +9,7 @@ import './book-list-badge.scss';
 
 const BookListBadge = (props: {
   bookList: Array<{
-    pathname: string,
+    pathName: string,
     _id: string,
     name: string,
     authors: Array<String>,
@@ -26,8 +26,8 @@ const BookListBadge = (props: {
           className='collection-item item-badge'
         >
           <img
-            src='images/items/ninja.png'
-            alt={item.pathname}
+            src={`images/items/${item.pathName}.png`}
+            alt={item.pathName}
             className='collection__image'
           />
           <p className='collection__authors'>{item.authors.map(author => <span key={uniqid()}>{author}</span>)}</p>

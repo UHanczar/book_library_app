@@ -13,6 +13,7 @@ import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
 import BookItem from '../BookItem/BookItem';
+import BookCategoryList from '../BookCategoryList/BookCategoryListContainer';
 
 class Main extends Component {
   constructor(props) {
@@ -153,6 +154,19 @@ class Main extends Component {
                   toggleBookListTableView={this.toggleBookListTableView}
                   showAsTable={showAsTable}
                 />)}
+            />
+            <Route
+              exact
+              path='/category/:name'
+              component={props => (
+                <BookCategoryList
+                  bookList={bookList}
+                  toggleSidebar={this.toggleSidebar}
+                  toggleFilterBar={this.toggleFilterBar}
+                  toggleBookListTableView={this.toggleBookListTableView}
+                  showAsTable={showAsTable}
+                  {...props}
+              />)}
             />
             <Route exact path='/book/:id' component={() => <BookItem />} />
           </Switch>

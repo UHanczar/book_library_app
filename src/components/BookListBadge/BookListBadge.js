@@ -46,7 +46,7 @@ const bookItem = PropTypes.shape({
   name: PropTypes.string,
   authors: PropTypes.arrayOf(PropTypes.string),
   _id: PropTypes.string
-})
+});
 
 
 BookListBadge.propTypes = {

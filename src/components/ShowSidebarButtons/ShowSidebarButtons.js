@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './showSidebarButtons.scss';
+import './show-sidebar-buttons.scss';
 
 const ShowSidebarButtons = (props: {
   toggleSidebar: Function,
@@ -19,13 +19,13 @@ const ShowSidebarButtons = (props: {
       <i className='material-icons'>menu</i>
     </div>
     <a
-      className='btn-flat filterbar-toggle'
+      className='btn-flat filterbar-toggle btn-small'
       onClick={props.toggleBookListTableView}
     >
       Show as {props.showAsTable ? 'Cards' : 'List'}
     </a>
     <a
-      className='btn-flat filterbar-toggle'
+      className='btn-flat filterbar-toggle btn-small'
       onClick={() => props.toggleFilterBar()}
     >
       Show Filter Bar

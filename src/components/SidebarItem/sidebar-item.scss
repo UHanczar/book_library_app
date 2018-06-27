@@ -16,14 +16,14 @@ $fontSize: 16px;
     align-items: center;
     width: 100%;
 
-    img.item__container-img {
+    &-img {
       width: 30px;
       height: 30px;
       border-radius: 50%;
       margin-right: 20px;
     }
 
-    p.item__container-text {
+    &-text {
       color: $textColor;
       font-size: $fontSize;
       align-self: center;

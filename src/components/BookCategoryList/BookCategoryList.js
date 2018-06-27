@@ -27,7 +27,8 @@ class BookCategoryList extends Component {
   static getDerivedStateFromProps(props: any, state: any) {
     if (props.bookList && props.bookList !== state.filteredList) {
       return {
-        filteredList: props.bookList.filter(book => book.categoryKeys.includes(props.match.params.name)) || []
+        filteredList: props.bookList.filter(book =>
+          book.categoryKeys.includes(props.match.params.name)) || []
       };
     }
     return null;

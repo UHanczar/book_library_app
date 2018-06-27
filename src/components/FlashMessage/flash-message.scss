@@ -6,16 +6,16 @@
   align-items: center;
   color: #ffffff;
   border-bottom: 1px solid #ffffff;
-  
-  .flash__message-item-text {
+
+  &-text {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 90%;
     font-weight: 900;
   }
-  
-  .flash__message-item-close {
+
+  &-close {
     width: 20px;
     height: 20px;
     border-radius: 50%;

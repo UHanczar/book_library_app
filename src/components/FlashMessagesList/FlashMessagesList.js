@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { flashMessageType } from 'redux-flash';
 
-import './flashMessageslist.scss';
+import './flash-messages-list.scss';
 
 import FlashMessage from '../FlashMessage/FlashMessage';
 

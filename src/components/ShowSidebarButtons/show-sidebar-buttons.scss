@@ -9,6 +9,13 @@
     justify-content: flex-end;
   }
 
+  .btn-small {
+    @media only screen and (max-width: 480px) {
+      font-size: 12px;
+      padding: 0 1rem;
+    }
+  }
+
   .sidebar-toggle {
     @media only screen and (min-width: 768px) {
       display: none;

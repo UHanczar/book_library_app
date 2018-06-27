@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './flashMessage.scss';
+import './flash-message.scss';
 
 const FlashMessage = (props: {
   message: string,

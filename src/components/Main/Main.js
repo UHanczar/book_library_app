@@ -12,7 +12,7 @@ import Login from '../Login/LoginContainer';
 import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
-import BookItem from '../BookItem/BookItem';
+import BookItem from '../BookItem/BookItemContainer';
 import BookCategoryList from '../BookCategoryList/BookCategoryListContainer';
 
 class Main extends Component {
@@ -33,7 +33,6 @@ class Main extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', debounce(this.updateDimensions));
-    this.props.fetchBookCategories();
     this.props.fetchBookList();
   }
 
@@ -124,6 +123,7 @@ class Main extends Component {
             {bookCategories && bookCategories.map(category => (
               <Link
                 to={`/category/${category.categoryPathName}`}
+                onClick={this.toggleSidebar}
                 className='category-link'
                 key={uniqid()}
               >
@@ -142,33 +142,34 @@ class Main extends Component {
           onClick={() => this.hideSidebars()}
         >
           <Switch>
+            <Route
+              exact
+              path='/category/:name'
+              component={props => (
+                <BookCategoryList
+                  bookList={bookList.list}
+                  toggleSidebar={this.toggleSidebar}
+                  toggleFilterBar={this.toggleFilterBar}
+                  toggleBookListTableView={this.toggleBookListTableView}
+                  showAsTable={showAsTable}
+                  {...props}
+                />
+            )}
+            />
+            <Route exact path='/book/:id' component={props => <BookItem {...props} />} />
             <Route exact path='/login' component={Login} />
             <Route
               exact
               path='/'
               component={() => (
                 <BookList
-                  bookList={bookList}
+                  bookList={bookList.list}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
                   toggleBookListTableView={this.toggleBookListTableView}
                   showAsTable={showAsTable}
                 />)}
             />
-            <Route
-              exact
-              path='/category/:name'
-              component={props => (
-                <BookCategoryList
-                  bookList={bookList}
-                  toggleSidebar={this.toggleSidebar}
-                  toggleFilterBar={this.toggleFilterBar}
-                  toggleBookListTableView={this.toggleBookListTableView}
-                  showAsTable={showAsTable}
-                  {...props}
-              />)}
-            />
-            <Route exact path='/book/:id' component={() => <BookItem />} />
           </Switch>
         </div>
         <div
@@ -218,10 +219,12 @@ const bookInterface = PropTypes.shape({
 Main.propTypes = {
   filterByDate: PropTypes.func.isRequired,
   filterByRate: PropTypes.func.isRequired,
-  fetchBookCategories: PropTypes.func.isRequired,
   fetchBookList: PropTypes.func.isRequired,
   bookCategories: PropTypes.arrayOf(categoryInterface),
-  bookList: PropTypes.arrayOf(bookInterface)
+  bookList: PropTypes.shape({
+    loading: PropTypes.bool,
+    list: PropTypes.arrayOf(bookInterface)
+  })
 };
 
 export default Main;

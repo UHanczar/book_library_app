@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './dateFilter.scss';
+import './date-filter.scss';
 
 const DateFilter = (props: {
   filterName: string,

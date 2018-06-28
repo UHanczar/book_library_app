@@ -44,11 +44,11 @@ describe('filter reducer actions', () => {
 
   it('should not change default state', () => {
     expect(filterReducer({
-      filterByDate: false,
-      filterByRate: false
+      filterByDate: true,
+      filterByRate: true
     }, { type: 'TEST_ACTION' })).toEqual({
-      filterByDate: false,
-      filterByRate: false
+      filterByDate: true,
+      filterByRate: true
     });
   });
 });

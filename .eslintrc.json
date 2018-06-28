@@ -8,7 +8,11 @@
     ],
     "globals": {
       "window": true,
-      "document": true
+      "document": true,
+      "jest": true,
+      "describe": true,
+      "it": true,
+      "expect": true
     },
     "parser": "babel-eslint",
     "rules": {

@@ -5,6 +5,9 @@ import Tabs from 'react-responsive-tabs';
 import 'react-responsive-tabs/styles.css';
 import './book.scss';
 
+import BookInfo from '../BookInfo/BookInfo';
+import BookDescription from '../BookDescription/BookDescription';
+
 class Book extends Component {
   constructor(props) {
     super(props);
@@ -13,13 +16,34 @@ class Book extends Component {
   }
 
   renderTabs() {
-    const bookData = [{ name: 'Info', data: '' }, { name: 'Description', data: this.props.book.description }, { name: 'Comments', data: '' }];
-    return bookData.map((book, index) => ({
+    const { book } = this.props;
+    console.log('BOOK', book);
+    const bookData = [
+      {
+        name: 'Info',
+        data: <BookInfo
+          authors={book.authors}
+          publisher={book.publisher}
+          year={book.year}
+          pages={book.pages}
+        />
+      },
+      {
+        name: 'Description',
+        data: <BookDescription description={book.description} />
+      },
+      {
+        name: 'Comments',
+        data: ''
+      }
+    ];
+
+    return bookData.map((item, index) => ({
       key: index,
-      tabClassName: 'tab',
-      panelClassName: 'panel',
-      title: book.name,
-      getContent: () => book.data
+      tabClassName: 'book__tab',
+      panelClassName: 'book__panel',
+      title: item.name,
+      getContent: () => item.data
     }));
   }
 

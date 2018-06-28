@@ -10,10 +10,12 @@ import './book-list-item-card.scss';
 const BookListItem = (props: {
   item: Object
 }) => (
-  <Link to={`/book/${props.item._id}`} className='card card-item'>
+  <Link to={`/book/${props.item._id}`} className='card hoverable card-item'>
     <div className='card-image'>
-      <img src={`images/items/${props.item.pathName}.png`} alt={props.item.pathname} />
-      <span className='card-title'>Card Title</span>
+      <img
+        className='card-image-item'
+        src={`images/items/${props.item.pathName}.png`} alt={props.item.pathname}
+      />
     </div>
     <div className='card-content'>
       <p className='card-content-title'>{props.item.name}</p>

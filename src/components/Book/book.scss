@@ -22,6 +22,25 @@
 
     .RRT__container {
       width: 100%;
+
+      .RRT__tab--selected {
+        background-color: #EDEDEE;
+        border: none;
+      }
+    }
+
+    .book__tab {
+      background-color: #ffffff;
+      border: none;
+    }
+
+    .book__panel {
+      width: 100%;
+      height: auto;
+      min-height: 44vh;
+      overflow-y: auto;
+      border: none;
+      padding-top: 20px;
     }
 
     &-title {
@@ -39,24 +58,24 @@
     width: 30%;
     min-height: 60vh;
     padding-top: 20px;
-    
+
     &-image {
       width: 80%;
       height: auto;
       margin-bottom: 20px;
-      
+
       &-item {
         width: 100%;
         height: auto;
       }
     }
-    
+
     &-access {
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      
+
       &-status span {
         font-weight: 900;
       }

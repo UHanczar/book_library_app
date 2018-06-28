@@ -7,6 +7,7 @@ import debounce from 'debounce';
 
 import './main.scss';
 
+import Loader from '../Loader/Loader';
 import SideBar from '../Sidebar/SidebarContainer';
 import Login from '../Login/LoginContainer';
 import DateFilter from '../DateFilter/DateFilter';
@@ -131,7 +132,7 @@ class Main extends Component {
             <Route
               exact
               path='/category/:name'
-              component={props => (
+              component={props => (bookList.loading ? (<Loader />) : (
                 <BookCategoryList
                   bookList={bookList.list}
                   toggleSidebar={this.toggleSidebar}
@@ -140,21 +141,23 @@ class Main extends Component {
                   showAsTable={showAsTable}
                   {...props}
                 />
-            )}
+            ))}
             />
             <Route exact path='/book/:id' component={props => <BookItem {...props} />} />
             <Route exact path='/login' component={Login} />
             <Route
               exact
               path='/'
-              component={() => (
+              component={() => (bookList.loading ? (<Loader />) : (
                 <BookList
+                  loading={bookList.loading}
                   bookList={bookList.list}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
                   toggleBookListTableView={this.toggleBookListTableView}
                   showAsTable={showAsTable}
-                />)}
+                />
+              ))}
             />
           </Switch>
         </div>

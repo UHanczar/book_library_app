@@ -43,13 +43,13 @@ describe('bookListReducer tests', () => {
 
   it('should not change state, when unregistered action was dispatched', () => {
     expect(bookListReducer({
-      loading: true,
-      list: null
+      loading: false,
+      list: 'book list'
     }, {
       type: 'FETCH_SOMETHING'
     })).toEqual({
-      loading: true,
-      list: null
+      loading: false,
+      list: 'book list'
     });
   });
 });

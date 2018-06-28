@@ -14,7 +14,8 @@ const BookListItem = (props: {
     <div className='card-image'>
       <img
         className='card-image-item'
-        src={`images/items/${props.item.pathName}.png`} alt={props.item.pathname}
+        src={`images/items/${props.item.pathName}.png`}
+        alt={props.item.pathName}
       />
     </div>
     <div className='card-content'>

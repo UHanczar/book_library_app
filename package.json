@@ -9,12 +9,13 @@
   "scripts": {
     "start:dev": "webpack-dev-server --mode development --config config/webpack.config.dev.babel.js",
     "start:prod": "babel-node server/index.js",
-    "build": "webpack --mode production --config config/webpack.config.prod.babel.js"
+    "build": "webpack --mode production --config config/webpack.config.prod.babel.js",
+    "test": "jest"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "./config/test-setup.js",
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "src/**/*.{js,jsx}",
       "!**/node_modules/**",
       "!**/vendor/**"
     ]

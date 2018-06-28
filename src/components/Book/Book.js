@@ -13,13 +13,13 @@ class Book extends Component {
   }
 
   renderTabs() {
-    const presidents = [{ name: 'Info', biography: '' }, { name: 'Description', biography: '' }, { name: 'Comments', biography: '' }];
-    return presidents.map((president, index) => ({
-      key: index, // Optional. Equals to tab index if this property is omitted
-      tabClassName: 'tab', // Optional
-      panelClassName: 'panel', // Optional
-      title: president.name,
-      getContent: () => president.biography
+    const bookData = [{ name: 'Info', data: '' }, { name: 'Description', data: this.props.book.description }, { name: 'Comments', data: '' }];
+    return bookData.map((book, index) => ({
+      key: index,
+      tabClassName: 'tab',
+      panelClassName: 'panel',
+      title: book.name,
+      getContent: () => book.data
     }));
   }
 
@@ -32,7 +32,20 @@ class Book extends Component {
           <div className='card__info-title'>{book.name}</div>
           <Tabs items={this.renderTabs()} transform={false} showInkBar />
         </div>
-        <div className='card__data'>Image</div>
+        <div className='card__data'>
+          <div className='card__data-image'>
+            <img
+              className='card__data-image-item'
+              src={`/images/items/${book.pathName}.png`}
+              alt={book.pathName}
+            />
+          </div>
+          <div className='card__data-access'>
+            <p className='card__data-access-status'>
+              Status: <span>Available</span>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

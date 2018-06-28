@@ -25,27 +25,13 @@ class Main extends Component {
       showAsTable: false
     };
 
-    this.updateDimensions = this.updateDimensions.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.toggleFilterBar = this.toggleFilterBar.bind(this);
     this.toggleBookListTableView = this.toggleBookListTableView.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('resize', debounce(this.updateDimensions));
     this.props.fetchBookList();
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', debounce(this.updateDimensions, 200));
-  }
-
-  updateDimensions() {
-    if (window.innerWidth > 767) {
-      this.setState({
-        categorySidebarOpened: false
-      });
-    }
   }
 
   toggleSidebar() {

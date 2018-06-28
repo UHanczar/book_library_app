@@ -19,7 +19,7 @@ const ShowSidebarButtons = (props: {
       <i className='material-icons'>menu</i>
     </div>
     <a
-      className='btn-flat filterbar-toggle btn-small'
+      className='btn-flat list-toggle btn-small'
       onClick={props.toggleBookListTableView}
     >
       Show as {props.showAsTable ? 'Cards' : 'List'}

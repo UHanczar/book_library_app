@@ -12,7 +12,11 @@
       "jest": true,
       "describe": true,
       "it": true,
-      "expect": true
+      "expect": true,
+      "shallow": true,
+      "mount": true,
+      "beforeEach": true,
+      "beforeAll": true
     },
     "parser": "babel-eslint",
     "rules": {

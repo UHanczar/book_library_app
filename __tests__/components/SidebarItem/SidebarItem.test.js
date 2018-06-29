@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 
-import SidebarItem from '../../src/components/SidebarItem/SidebarItem';
+import SidebarItem from '../../../src/components/SidebarItem/SidebarItem';
 
 describe('SidebarItem tests', () => {
   let wrapper;

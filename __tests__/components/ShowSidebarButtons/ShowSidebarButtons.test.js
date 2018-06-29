@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ShowSidebarButtons from '../../src/components/ShowSidebarButtons/ShowSidebarButtons';
+import ShowSidebarButtons from '../../../src/components/ShowSidebarButtons/ShowSidebarButtons';
 
 describe('ShowSidebarButtons tests', () => {
   let wrapper;

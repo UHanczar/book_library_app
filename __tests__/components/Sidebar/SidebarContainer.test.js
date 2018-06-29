@@ -1,7 +1,7 @@
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 
-import SidebarContainer from '../../src/components/Sidebar/SidebarContainer';
+import SidebarContainer from '../../../src/components/Sidebar/SidebarContainer';
 
 const mockStore = configureMockStore();
 

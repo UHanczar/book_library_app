@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Sidebar from '../../src/components/Sidebar/Sidebar';
+import Sidebar from '../../../src/components/Sidebar/Sidebar';
 
-jest.doMock('../../src/components/SidebarItem/SidebarItem', () => {
+jest.doMock('../../../src/components/SidebarItem/SidebarItem', () => {
   const SidebarItemMock = () => <div />;
   return SidebarItemMock;
 });

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Footer from '../../src/components/Footer/Footer';
+import Loader from '../../../src/components/Loader/Loader';
 
-describe('Footer tests', () => {
+describe('Loader tests', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<Footer />);
+    wrapper = mount(<Loader />);
   });
 
   it('should exist', () => {
@@ -14,6 +14,6 @@ describe('Footer tests', () => {
   });
 
   it('should get render itserf properly', () => {
-    expect(wrapper.find('.footer__container').length).toBe(1);
+    expect(wrapper.find('.loader-wrapper-container').length).toBe(1);
   });
 });

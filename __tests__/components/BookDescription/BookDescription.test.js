@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BookDescription from '../../src/components/BookDescription/BookDescription';
+import BookDescription from '../../../src/components/BookDescription/BookDescription';
 
 describe('BookDescription tests', () => {
   let wrapper;

@@ -2,53 +2,53 @@ import { filterByDate, filterByRate } from '../../src/actions/filterActions';
 import filterReducer from '../../src/reducers/filterReducer';
 
 describe('filter reducer actions', () => {
-  it('should set filterByDate to true', () => {
+  it('should set byRateFilter to true', () => {
     expect(filterReducer({
-      filterByDate: false,
-      filterByRate: false
+      byDateFilter: false,
+      byRateFilter: false
     }, filterByDate())).toEqual({
-      filterByDate: true,
-      filterByRate: false
+      byDateFilter: true,
+      byRateFilter: false
     });
   });
 
-  it('should set filterByDate to false', () => {
+  it('should set byRateFilter to false', () => {
     expect(filterReducer({
-      filterByDate: true,
-      filterByRate: false
+      byDateFilter: true,
+      byRateFilter: false
     }, filterByDate())).toEqual({
-      filterByDate: false,
-      filterByRate: false
+      byDateFilter: false,
+      byRateFilter: false
     });
   });
 
-  it('should set filterByRate to true', () => {
+  it('should set byRateFilter to true', () => {
     expect(filterReducer({
-      filterByDate: false,
-      filterByRate: true
+      byDateFilter: false,
+      byRateFilter: true
     }, filterByRate())).toEqual({
-      filterByDate: false,
-      filterByRate: false
+      byDateFilter: false,
+      byRateFilter: false
     });
   });
 
-  it('should set filterByRate to true', () => {
+  it('should set byRateFilter to true', () => {
     expect(filterReducer({
-      filterByDate: false,
-      filterByRate: false
+      byDateFilter: false,
+      byRateFilter: false
     }, filterByRate())).toEqual({
-      filterByDate: false,
-      filterByRate: true
+      byDateFilter: false,
+      byRateFilter: true
     });
   });
 
   it('should not change default state', () => {
     expect(filterReducer({
-      filterByDate: true,
-      filterByRate: true
+      byDateFilter: true,
+      byRateFilter: true
     }, { type: 'TEST_ACTION' })).toEqual({
-      filterByDate: true,
-      filterByRate: true
+      byDateFilter: true,
+      byRateFilter: true
     });
   });
 });

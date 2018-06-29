@@ -26,8 +26,10 @@ const FlashMessagesList = (props: {
   );
 };
 
+const flashInterface = PropTypes.shape(flashMessageType);
+
 FlashMessagesList.propTypes = {
-  flash: PropTypes.arrayOf(flashMessageType),
+  flash: PropTypes.arrayOf(flashInterface),
   removeMessage: PropTypes.func.isRequired
 };
 

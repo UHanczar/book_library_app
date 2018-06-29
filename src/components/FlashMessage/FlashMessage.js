@@ -18,7 +18,9 @@ const FlashMessage = (props: {
     <div
       className='flash__message-item-close'
       onClick={() => props.removeMessage(props.id)}
-    >+</div>
+    >
+      +
+    </div>
   </div>
 );
 

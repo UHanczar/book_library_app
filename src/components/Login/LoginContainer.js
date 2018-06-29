@@ -5,7 +5,7 @@ import Login from './Login';
 
 import { loginUser, logoutUser } from '../../actions/authActions';
 
-// const mapStateToProps = ({ bookList }) => ({ bookList });
+const mapStateToProps = ({ bookList }) => ({ bookList });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

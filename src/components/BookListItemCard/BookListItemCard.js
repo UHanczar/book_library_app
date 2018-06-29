@@ -27,7 +27,7 @@ const BookListItem = (props: {
         ))}
       </p>
       <StarRatings
-        rating={2.6}
+        rating={parseFloat(props.item.rating)}
         starRatedColor='orange'
         numberOfStars={5}
         name='rating'
@@ -45,6 +45,7 @@ BookListItem.propTypes = {
     pathName: PropTypes.string,
     name: PropTypes.string,
     authors: PropTypes.arrayOf(PropTypes.string),
+    rating: PropTypes.string,
     _id: PropTypes.string
   }).isRequired
 };

@@ -7,6 +7,10 @@ import debounce from 'debounce';
 
 import './main.scss';
 
+import {
+  filterByDateHelper,
+  filterByRateHelper
+} from '../../helpers/helpers';
 import Loader from '../Loader/Loader';
 import SideBar from '../Sidebar/SidebarContainer';
 import Login from '../Login/LoginContainer';
@@ -84,13 +88,18 @@ class Main extends Component {
       bookCategories,
       bookList,
       filterByDate,
-      filterByRate
+      filterByRate,
+      bookListFilter
     } = this.props;
     const {
       categorySidebarOpened,
       filterSidebarOpened,
       showAsTable
     } = this.state;
+
+    const bookItems = bookListFilter.byDateFilter ?
+      filterByDateHelper([...bookList.list]) : bookListFilter.byRateFilter
+        ? filterByRateHelper([...bookList.list]) : bookList.list;
 
     return (
       <div className='main__container'>
@@ -134,7 +143,7 @@ class Main extends Component {
               path='/category/:name'
               component={props => (bookList.loading ? (<Loader />) : (
                 <BookCategoryList
-                  bookList={bookList.list}
+                  bookList={bookItems}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
                   toggleBookListTableView={this.toggleBookListTableView}
@@ -151,7 +160,7 @@ class Main extends Component {
               component={() => (bookList.loading ? (<Loader />) : (
                 <BookList
                   loading={bookList.loading}
-                  bookList={bookList.list}
+                  bookList={bookItems}
                   toggleSidebar={this.toggleSidebar}
                   toggleFilterBar={this.toggleFilterBar}
                   toggleBookListTableView={this.toggleBookListTableView}
@@ -177,11 +186,13 @@ class Main extends Component {
               filterName='Filter by date'
               identifier='dateFilter'
               filterByDate={filterByDate}
+              byDateFilter={bookListFilter.byDateFilter}
             />
             <RateFilter
               filterName='Filter by rating'
               identifier='popularityFilter'
               filterByRate={filterByRate}
+              byRateFilter={bookListFilter.byRateFilter}
             />
           </SideNav>
         </div>
@@ -209,6 +220,10 @@ Main.propTypes = {
   filterByDate: PropTypes.func.isRequired,
   filterByRate: PropTypes.func.isRequired,
   fetchBookList: PropTypes.func.isRequired,
+  bookListFilter: PropTypes.shape({
+    byDateFilter: PropTypes.bool,
+    byRateFilter: PropTypes.bool
+  }).isRequired,
   bookCategories: PropTypes.arrayOf(categoryInterface),
   bookList: PropTypes.shape({
     loading: PropTypes.bool,

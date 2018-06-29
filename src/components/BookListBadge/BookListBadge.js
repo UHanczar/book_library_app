@@ -15,7 +15,8 @@ const BookListBadge = (props: {
     name: string,
     authors: Array<String>,
     publisher: string,
-    year: string
+    year: string,
+    rating: string
   }>
 }) => (
   <div className='badge__container'>
@@ -37,7 +38,7 @@ const BookListBadge = (props: {
           <p className='collection__year'>{item.year}</p>
           <div className='badge collection__rating'>
             <StarRatings
-              rating={3.4}
+              rating={parseFloat(item.rating)}
               starRatedColor='orange'
               numberOfStars={5}
               name='rating'
@@ -57,6 +58,7 @@ const bookItem = PropTypes.shape({
   pathname: PropTypes.string,
   name: PropTypes.string,
   authors: PropTypes.arrayOf(PropTypes.string),
+  rating: PropTypes.string,
   _id: PropTypes.string
 });
 

@@ -9,10 +9,12 @@ import { fetchBookList } from '../../actions/bookListActions';
 
 const mapStateToProps = ({
   bookCategories,
-  bookList
+  bookList,
+  bookListFilter
 }) => ({
   bookCategories,
-  bookList
+  bookList,
+  bookListFilter
 });
 
 const mapDispatchToProps = (dispatch) => {

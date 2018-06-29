@@ -11,7 +11,7 @@ class Login extends Component {
     return (
       <div className='login__container'>
         <div className='form__container'>
-          <form onSubmit={handleSubmit(loginUser)}>
+          <form onSubmit={handleSubmit(loginUser)} className='submit-form'>
             <div>
               <Field
                 name='login'

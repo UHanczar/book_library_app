@@ -1,6 +1,9 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from 'react-responsive-tabs';
+import StarRatings from 'react-star-ratings';
 
 import 'react-responsive-tabs/styles.css';
 import './book.scss';
@@ -9,7 +12,9 @@ import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
 
 class Book extends Component {
-  constructor(props) {
+  constructor(props: {
+    book: Object
+  }) {
     super(props);
 
     this.renderTabs = this.renderTabs.bind(this);
@@ -17,7 +22,7 @@ class Book extends Component {
 
   renderTabs() {
     const { book } = this.props;
-    console.log('BOOK', book);
+
     const bookData = [
       {
         name: 'Info',
@@ -64,10 +69,28 @@ class Book extends Component {
               alt={book.pathName}
             />
           </div>
+          <StarRatings
+            rating={parseFloat(book.rating)}
+            starRatedColor='orange'
+            numberOfStars={5}
+            name='rating'
+            starDimension='15px'
+            isSelectable='false'
+            isAggregateRating
+            starSpacing='4px'
+          />
           <div className='card__data-access'>
-            <p className='card__data-access-status'>
-              Status: <span>Available</span>
-            </p>
+            <div className='card__data-access-status'>
+              <p className='access-title'>Status:</p>
+              <p className='access-text'>{book.isAvailable ? ' Available' : ' Not Available'}</p>
+            </div>
+            <div className='card__data-access-reader'>
+              <p className='access-title'>Reader:</p> <p className='access-text'>{book.currentReader}</p>
+            </div>
+            <div className='card__data-access-return-date'>
+              <p className='access-title'>Return:</p>
+              <p className='access-text'>{book.returnDate}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -82,7 +105,10 @@ const bookInterface = {
   publisher: PropTypes.string,
   year: PropTypes.string,
   pages: PropTypes.string,
-  description: PropTypes.string
+  rating: PropTypes.string,
+  description: PropTypes.string,
+  isAvailable: PropTypes.bool,
+  currentReader: PropTypes.string
 };
 
 Book.propTypes = {

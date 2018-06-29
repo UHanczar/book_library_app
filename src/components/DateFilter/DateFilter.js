@@ -8,6 +8,7 @@ import './date-filter.scss';
 const DateFilter = (props: {
   filterName: string,
   identifier: string,
+  byDateFilter: boolean,
   filterByDate: Function
 }) => (
   <div className='filter__item-container'>
@@ -17,7 +18,12 @@ const DateFilter = (props: {
     <div className='switch filter__item-container-text' onChange={props.filterByDate}>
       <label htmlFor={props.identifier}>
         Off
-        <input type='checkbox' id={props.identifier} name={props.identifier} />
+        <input
+          type='checkbox'
+          id={props.identifier}
+          name={props.identifier}
+          checked={props.byDateFilter}
+        />
         <span className='lever' />
         On
       </label>
@@ -28,7 +34,8 @@ const DateFilter = (props: {
 DateFilter.propTypes = {
   filterName: PropTypes.string.isRequired,
   identifier: PropTypes.string.isRequired,
-  filterByDate: PropTypes.func.isRequired
+  filterByDate: PropTypes.func.isRequired,
+  byDateFilter: PropTypes.bool.isRequired
 };
 
 export default DateFilter;

@@ -8,6 +8,7 @@ import './rate-filter.scss';
 const RateFilter = (props: {
   filterName: string,
   identifier: string,
+  byRateFilter: boolean,
   filterByRate: Function
 }) => (
   <div className='filter__item-container'>
@@ -17,7 +18,12 @@ const RateFilter = (props: {
     <div className='switch filter__item-container-text' onChange={props.filterByRate}>
       <label htmlFor={props.identifier}>
         Off
-        <input type='checkbox' id={props.identifier} name={props.identifier} />
+        <input
+          type='checkbox'
+          id={props.identifier}
+          name={props.identifier}
+          checked={props.byRateFilter}
+        />
         <span className='lever' />
         On
       </label>
@@ -28,7 +34,8 @@ const RateFilter = (props: {
 RateFilter.propTypes = {
   filterName: PropTypes.string.isRequired,
   identifier: PropTypes.string.isRequired,
-  filterByRate: PropTypes.func.isRequired
+  filterByRate: PropTypes.func.isRequired,
+  byRateFilter: PropTypes.bool.isRequired
 };
 
 export default RateFilter;

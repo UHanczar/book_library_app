@@ -7,7 +7,6 @@ import uniqid from 'uniqid';
 import './main.scss';
 
 import {
-  defaultSort,
   filterByDateHelper,
   filterByRateHelper
 } from '../../helpers/helpers';
@@ -99,7 +98,7 @@ class Main extends Component {
 
     const bookItems = bookListFilter.byDateFilter ?
       filterByDateHelper([...bookList.list]) : bookListFilter.byRateFilter
-        ? filterByRateHelper([...bookList.list]) : defaultSort(bookList.list);
+        ? filterByRateHelper([...bookList.list]) : bookList.list;
 
     return (
       <div className='main__container'>

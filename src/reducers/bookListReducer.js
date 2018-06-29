@@ -19,7 +19,11 @@ const bookListReducer = (state = initialState, action) => {
     case FETCH_BOOK_LIST_SUCCESS:
       return {
         loading: false,
-        list: action.payload
+        list: action.payload.sort((a, b) => {
+          if (a.pathName < b.pathName) return -1;
+          if (a.pathName > b.pathName) return 1;
+          return 0;
+        })
       };
     case FETCH_BOOK_LIST_ERROR:
       return {

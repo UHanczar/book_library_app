@@ -79,7 +79,7 @@ describe('BookLIst tests', () => {
 
     it('should render BookListBadge component', () => {
       expect(wrapper.find('.card-item').length).toBe(0);
-      console.log(wrapper.find('.badge__container').length).toBe(1);
+      expect(wrapper.find('.badge__container').length).toBe(1);
     });
   });
 });

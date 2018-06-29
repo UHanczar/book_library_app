@@ -1,7 +1,7 @@
 export const defaultSort = bookList =>
   bookList && bookList.sort((a, b) => {
-    if(a.pathName < b.pathName) return -1;
-    if(a.pathName > b.pathName) return 1;
+    if (a.pathName < b.pathName) return -1;
+    if (a.pathName > b.pathName) return 1;
     return 0;
   });
 

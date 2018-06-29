@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { Route, Switch, Link } from 'react-router-dom';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import uniqid from 'uniqid';
-import debounce from 'debounce';
 
 import './main.scss';
 
 import {
+  defaultSort,
   filterByDateHelper,
   filterByRateHelper
 } from '../../helpers/helpers';
@@ -99,7 +99,7 @@ class Main extends Component {
 
     const bookItems = bookListFilter.byDateFilter ?
       filterByDateHelper([...bookList.list]) : bookListFilter.byRateFilter
-        ? filterByRateHelper([...bookList.list]) : bookList.list;
+        ? filterByRateHelper([...bookList.list]) : defaultSort(bookList.list);
 
     return (
       <div className='main__container'>

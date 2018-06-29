@@ -24,22 +24,30 @@
     }
   }
 
-  .card-content-title {
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .card-content {
     padding-bottom: 5px;
-  }
+    @media only screen and (min-width: 768px) {
+      padding-bottom: 10px;
+    }
 
-  .card-content-authors {
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    span {
-      color: #b1b1b1;
+    .card-content-title {
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-bottom: 5px;
+    }
+  
+    .card-content-authors {
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-bottom: 10px;
+  
+      span {
+        color: #b1b1b1;
+      }
     }
   }
 }

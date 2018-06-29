@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
+import StarRatings from 'react-star-ratings';
 
 import './book-list-badge.scss';
 
@@ -34,7 +35,18 @@ const BookListBadge = (props: {
           <p className='collection__title'>{item.name}</p>
           <p className='collection__publisher'>{item.publisher}</p>
           <p className='collection__year'>{item.year}</p>
-          <p className='badge collection__badge'>Rating</p>
+          <div className='badge collection__rating'>
+            <StarRatings
+              rating={3.4}
+              starRatedColor='orange'
+              numberOfStars={5}
+              name='rating'
+              starDimension='15px'
+              isSelectable
+              isAggregateRating
+              starSpacing='-2px'
+            />
+          </div>
         </Link>
       ))}
     </div>

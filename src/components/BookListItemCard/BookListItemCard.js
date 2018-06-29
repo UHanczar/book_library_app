@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
+import StarRatings from 'react-star-ratings';
 
 import './book-list-item-card.scss';
 
@@ -25,6 +26,16 @@ const BookListItem = (props: {
           <span key={uniqid()}>{author}</span>
         ))}
       </p>
+      <StarRatings
+        rating={2.6}
+        starRatedColor='orange'
+        numberOfStars={5}
+        name='rating'
+        starDimension='15px'
+        isSelectable='false'
+        isAggregateRating
+        starSpacing='4px'
+      />
     </div>
   </Link>
 );

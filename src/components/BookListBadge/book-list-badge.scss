@@ -32,7 +32,7 @@
     }
 
     .collection__title {
-      width: 50%;
+      width: 45%;
       padding-right: 20px;
     }
 
@@ -51,8 +51,14 @@
     }
 
     .collection__rating {
-      width: 10%;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-left: auto;
+      @media only screen and (max-width: 768px) {
+        width: 25%;
+      }
     }
   }
 }

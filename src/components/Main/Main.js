@@ -17,7 +17,7 @@ import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
 import BookItem from '../BookItem/BookItemContainer';
-import BookCategoryList from '../BookCategoryList/BookCategoryListContainer';
+import BookCategoryList from '../BookCategoryList/BookCategoryList';
 
 class Main extends Component {
   constructor(props) {

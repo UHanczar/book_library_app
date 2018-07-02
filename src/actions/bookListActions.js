@@ -22,12 +22,10 @@ export const fetchBookList = () => async (dispatch) => {
       });
     }
   } catch (error) {
-    const errorMessage = flashErrorMessage('List of books was not loaded.');
-    dispatch(errorMessage);
     dispatch({
       type: FETCH_BOOK_LIST_ERROR
     });
+    const errorMessage = flashErrorMessage('List of books was not loaded.');
+    dispatch(errorMessage);
   }
 };
-
-export const addBookList = () => {};

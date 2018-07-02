@@ -16,16 +16,16 @@ describe('bookListReducer tests', () => {
     });
   });
 
-  it('should load book list and set load to false', () => {
+  it('should load book list, sort it and set load to false', () => {
     expect(bookListReducer({
       loading: true,
       list: null
     }, {
       type: FETCH_BOOK_LIST_SUCCESS,
-      payload: 'book list'
+      payload: [{ name: 'js list', pathName: 'js_list' }, { name: 'ts list', pathName: 'ts_list' }, { name: 'ts list', pathName: 'ts_list' }, { name: 'js list', pathName: 'js_list' }, { name: 'js list', pathName: 'js_list' }]
     })).toEqual({
       loading: false,
-      list: 'book list'
+      list: [{ name: 'js list', pathName: 'js_list' }, { name: 'js list', pathName: 'js_list' }, { name: 'js list', pathName: 'js_list' }, { name: 'ts list', pathName: 'ts_list' }, { name: 'ts list', pathName: 'ts_list' }]
     });
   });
 
@@ -44,12 +44,13 @@ describe('bookListReducer tests', () => {
   it('should not change state, when unregistered action was dispatched', () => {
     expect(bookListReducer({
       loading: false,
-      list: 'book list'
+      list: null
     }, {
-      type: 'FETCH_SOMETHING'
+      type: 'FETCH_SOMETHING',
+      payload: [{ name: 'book list', pathName: 'book_list' }]
     })).toEqual({
       loading: false,
-      list: 'book list'
+      list: null
     });
   });
 });

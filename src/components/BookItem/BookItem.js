@@ -11,7 +11,8 @@ class BookItem extends Component {
   constructor(props: {
     getBookItem: Function,
     removeBookItem: Function,
-    bookItem: Object
+    bookItem: Object,
+    match: Object
   }) {
     super(props);
 
@@ -65,7 +66,7 @@ BookItem.propTypes = {
   bookItem: PropTypes.shape({
     loading: PropTypes.bool,
     list: PropTypes.arrayOf(bookInterface)
-  }),
+  }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string

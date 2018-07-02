@@ -28,7 +28,7 @@ class BookCategoryList extends Component {
     if (props.bookList && props.bookList !== state.filteredList) {
       return {
         filteredList: props.bookList.filter(book =>
-          book.categoryKeys.includes(props.match.params.name)) || []
+          book.categoryKeys.includes(props.match.params.name))
       };
     }
     return null;

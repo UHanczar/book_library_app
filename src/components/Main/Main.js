@@ -13,6 +13,7 @@ import {
 import Loader from '../Loader/Loader';
 import SideBar from '../Sidebar/SidebarContainer';
 import Login from '../Login/LoginContainer';
+import CheckAuthentication from '../CheckAuthentication/CheckAuthentication';
 import DateFilter from '../DateFilter/DateFilter';
 import RateFilter from '../RateFilter/RateFilter';
 import BookList from '../BookList/BookList';
@@ -152,7 +153,7 @@ class Main extends Component {
             ))}
             />
             <Route exact path='/book/:id' component={props => <BookItem {...props} />} />
-            <Route exact path='/login' component={Login} />
+            <Route exact path='/login' component={CheckAuthentication(Login)} />
             <Route
               exact
               path='/'

@@ -1,9 +1,16 @@
+// @flow
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 import './header.scss';
 
-const Header = () => (
+const Header = (props: {
+  logoutUser: Function,
+  user: {
+    authenticated: boolean,
+    userData: Object
+}}) => (
   <div className='header__container'>
     <nav className='navbar-fixed light-blue lighten-2'>
       <div className='nav-wrapper'>
@@ -16,14 +23,28 @@ const Header = () => (
           </div>
         </Link>
         <ul className='right'>
-          <li>
-            <Link to='/login'>
-              <i className='material-icons left'>
-                account_circle
-              </i>
-              Login
-            </Link>
-          </li>
+          {props.user.userData && props.user.authenticated ? (
+            <li>
+              <div className='header-btn'>
+                <i className='material-icons left header__user-logo'>
+                  account_circle
+                </i>
+                <span className='header__user-name'>
+                  {props.user.userData.firstName}
+                </span>
+                <span onClick={() => props.logoutUser()}>Logout</span>
+              </div>
+            </li>
+          ) : (
+            <li>
+              <Link to='/login'>
+                <i className='material-icons left'>
+                  account_circle
+                </i>
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

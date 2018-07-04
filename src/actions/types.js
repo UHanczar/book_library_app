@@ -1,6 +1,11 @@
 // auth actions
 export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const CHECK_USER = 'CHECK_USER';
+export const CHECK_USER_SUCCESS = 'CHECK_USER_SUCCESS';
+export const CHECK_USER_ERROR = 'CHECK_USER_ERROR';
 
 // bookCategories Actions
 export const FETCH_BOOK_CATEGORIES = 'FETCH_BOOK_CATEGORIES';

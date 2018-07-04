@@ -2,7 +2,7 @@ import React from 'react';
 
 import './app.scss';
 
-import Header from './Header/Header';
+import Header from './Header/HeaderContainer';
 import FlashMessagesList from './FlashMessagesList/FlashMessagesListContainer';
 import Main from './Main/MainContainer';
 import Footer from './Footer/Footer';

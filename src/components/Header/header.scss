@@ -1,5 +1,6 @@
 .header__container {
   height: auto;
+  padding-rigth: 20px;
 
   .brand-logo {
     margin-left: 30px;
@@ -27,6 +28,23 @@
 
       p.logo-text {
         font-size: 20px;
+      }
+    }
+  }
+
+  .right {
+    margin-right: 20px;
+
+    .header-btn {
+      cursor: pointer;
+
+      .header__user-logo {
+        margin-right: 5px;
+      }
+
+      .header__user-name {
+        font-size: 12px;
+        margin-right: 15px;
       }
     }
   }

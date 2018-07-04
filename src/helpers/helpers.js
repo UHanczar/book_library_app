@@ -11,3 +11,17 @@ export const filterByRateHelper = bookList =>
     if (parseFloat(a.rating) > parseFloat(b.rating)) return -1;
     return 0;
   });
+
+export const validateLoginFormErrors = (formProps) => {
+  const errors = {};
+
+  if (!formProps.login) {
+    errors.login = 'Please enter a valid login';
+  }
+
+  if (!formProps.password) {
+    errors.password = 'Please enter a password';
+  }
+
+  return errors;
+};

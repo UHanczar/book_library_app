@@ -9,5 +9,13 @@
   .form__container {
     width: 500px;
     height: 500px;
+
+    .password-field {
+      margin-bottom: 30px;
+    }
+
+    .helper-text-wrong {
+      color: #af3b17;
+    }
   }
 }

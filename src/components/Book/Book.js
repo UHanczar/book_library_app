@@ -10,6 +10,7 @@ import './book.scss';
 
 import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
+import BookComments from '../BookComments/BookComments';
 
 class Book extends Component {
   constructor(props: {
@@ -39,7 +40,7 @@ class Book extends Component {
       },
       {
         name: 'Comments',
-        data: ''
+        data: <BookComments />
       }
     ];
 

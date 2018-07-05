@@ -14,30 +14,28 @@ describe('Login tests', () => {
   let wrapper;
   let handleSubmit;
   let loginUser;
-  let mockCall = jest.fn();
 
   describe('Login render tests', () => {
-    beforeEach(() => {
-      loginUser = jest.fn(() => mockCall());
-      handleSubmit = jest.fn(() => loginUser());
+    beforeAll(() => {
+      loginUser = jest.fn();
+      handleSubmit = jest.fn(cb => cb());
       const initialState = {
         user: { authenticated: false, user: null },
-        form: {
-          login: {
-            fields: {
-              login: {
-                touched: false
-              },
-              password: {
-                touched: false
-              }
+        login: {
+          fields: {
+            login: {
+              touched: true
             },
-            syncErrors: {
-              login: 'Please enter a valid login',
-              password: 'Please enter a valid password'
+            password: {
+              touched: true
             }
+          },
+          syncErrors: {
+            login: 'Please enter a valid login',
+            password: 'Please enter a valid password'
           }
-        }
+        },
+        history: {}
       };
 
       const mockStore = configureMockStore([thunk]);
@@ -49,8 +47,14 @@ describe('Login tests', () => {
             {...initialState}
             handleSubmit={handleSubmit}
             loginUser={loginUser}
+            history={{}}
           />
-        </Provider>);
+        </Provider>
+      );
+    });
+
+    beforeEach(() => {
+      loginUser.mockClear();
     });
 
     it('should be defined', () => {
@@ -67,15 +71,18 @@ describe('Login tests', () => {
       expect(handleSubmit.mock.calls.length).toBe(1);
     });
 
-    it('should call handleSubmit on submit event', () => {
-      console.log(wrapper.find('.submit-form').props());
+    it('should call loginUser on handleSubmit calling', () => {
+      wrapper.props().children.props.handleSubmit(loginUser);
+
+      expect(wrapper.props().children.props.loginUser).toBeCalled();
+      expect(loginUser.mock.calls.length).toBe(1);
     });
   });
 
-  describe('Login render tests', () => {
+  describe('Login conditional render tests', () => {
     beforeEach(() => {
-      loginUser = jest.fn(() => mockCall());
-      handleSubmit = jest.fn(() => loginUser());
+      loginUser = jest.fn();
+      handleSubmit = jest.fn();
       const initialState = {
         user: { authenticated: false, user: null, loading: true },
         form: {
@@ -87,10 +94,6 @@ describe('Login tests', () => {
               password: {
                 touched: false
               }
-            },
-            syncErrors: {
-              login: 'Please enter a valid login',
-              password: 'Please enter a valid password'
             }
           }
         }

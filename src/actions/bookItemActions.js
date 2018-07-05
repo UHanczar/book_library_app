@@ -6,7 +6,10 @@ import {
   FETCH_BOOK_ITEM,
   FETCH_BOOK_ITEM_SUCCESS,
   FETCH_BOOK_ITEM_ERROR,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  RATE_ITEM,
+  RATE_ITEM_SUCCESS,
+  RATE_ITEM_ERROR
 } from '../actions/types';
 
 export const getBookItem = bookId => async (dispatch) => {
@@ -37,3 +40,40 @@ export const getBookItem = bookId => async (dispatch) => {
 export const removeBookItem = () => ({
   type: REMOVE_ITEM
 });
+
+export const rateItem = rating => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: RATE_ITEM
+    });
+
+    const token = localStorage.getItem('token');
+    const { user, bookItem } = getState();
+    const body = {
+      rating,
+      userId: user.userData._id,
+      bookId: bookItem.book._id
+    };
+
+    const ratedBook = await axios.post(`${api}/book_item/rate`, body, {
+      headers: { Authorization: token }
+    });
+
+    if (ratedBook.data.success) {
+      dispatch({
+        type: RATE_ITEM_SUCCESS,
+        payload: ratedBook.data.ratingData
+      });
+    } else {
+      const errorMessage = flashErrorMessage(ratedBook.data.message);
+      dispatch(errorMessage);
+    }
+  } catch (error) {
+    const errorMessage = flashErrorMessage('There is an error occured.');
+    dispatch({
+      type: RATE_ITEM_ERROR
+    });
+
+    dispatch(errorMessage);
+  }
+};

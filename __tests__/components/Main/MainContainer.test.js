@@ -61,6 +61,6 @@ describe('MainContainer tests', () => {
   });
 
   it('should be defined', () => {
-    // expect(wrapper).toBeDefined();
+    expect(wrapper).toBeDefined();
   });
 });

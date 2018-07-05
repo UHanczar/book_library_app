@@ -8,9 +8,9 @@ import StarRatings from 'react-star-ratings';
 import 'react-responsive-tabs/styles.css';
 import './book.scss';
 
+import { calculateBookRating, getReturnDate } from '../../helpers/helpers';
 import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
-import BookComments from '../BookComments/BookComments';
 
 class Book extends Component {
   constructor(props: {
@@ -37,10 +37,6 @@ class Book extends Component {
       {
         name: 'Description',
         data: <BookDescription description={book.description} />
-      },
-      {
-        name: 'Comments',
-        data: <BookComments />
       }
     ];
 
@@ -54,12 +50,44 @@ class Book extends Component {
   }
 
   render() {
-    const { book } = this.props;
+    const { book, rateItem, user: { authenticated, userData, loading } } = this.props;
+    const ratingData: any = authenticated && userData && book ?
+      book.ratingData.filter(item => item.userId === userData._id) : 0;
+    const userRating = ratingData.length > 0 ? parseInt(ratingData[0].rating, 10) : 0;
 
     return (
       <div className='book__item-container-card'>
         <div className='card__info'>
           <div className='card__info-title'>{book.name}</div>
+          <div className='rating__container'>
+            <div className='rating-title'>Rate this book</div>
+            <div className='rating-body'>
+              {
+                authenticated && !userRating ? (
+                  <StarRatings
+                    rating={userRating}
+                    starRatedColor='orange'
+                    numberOfStars={5}
+                    name='rating'
+                    starDimension='25px'
+                    isAggregateRating
+                    starSpacing='6px'
+                    changeRating={rating => rateItem(rating)}
+                  />
+                ) : (
+                  <StarRatings
+                    rating={userRating}
+                    starRatedColor='orange'
+                    numberOfStars={5}
+                    name='rating'
+                    starDimension='25px'
+                    isAggregateRating
+                    starSpacing='6px'
+                  />
+                )
+              }
+            </div>
+          </div>
           <Tabs items={this.renderTabs()} transform={false} showInkBar />
         </div>
         <div className='card__data'>
@@ -71,7 +99,7 @@ class Book extends Component {
             />
           </div>
           <StarRatings
-            rating={parseFloat(book.rating)}
+            rating={parseFloat(calculateBookRating(book.ratingData))}
             starRatedColor='orange'
             numberOfStars={5}
             name='rating'
@@ -83,14 +111,14 @@ class Book extends Component {
           <div className='card__data-access'>
             <div className='card__data-access-status'>
               <p className='access-title'>Status:</p>
-              <p className='access-text'>{book.isAvailable ? ' Available' : ' Not Available'}</p>
+              <p className={book.isAvailable ? 'access-text' : 'access-text access-text-red'}>{book.isAvailable ? ' Available' : ' Not Available'}</p>
             </div>
             <div className='card__data-access-reader'>
-              <p className='access-title'>Reader:</p> <p className='access-text'>{book.currentReader}</p>
+              <p className='access-title'>Reader:</p> <p className='access-text'><a>{!book.isAvailable ? `@${book.currentReader.login}` : null}</a></p>
             </div>
             <div className='card__data-access-return-date'>
               <p className='access-title'>Return:</p>
-              <p className='access-text'>{book.returnDate}</p>
+              <p className='access-text'>{!book.isAvailable ? getReturnDate(book.returnDate) : null}</p>
             </div>
           </div>
         </div>
@@ -108,12 +136,12 @@ const bookInterface = {
   pages: PropTypes.string,
   rating: PropTypes.string,
   description: PropTypes.string,
-  isAvailable: PropTypes.bool,
-  currentReader: PropTypes.string
+  isAvailable: PropTypes.bool
 };
 
 Book.propTypes = {
-  book: PropTypes.shape(bookInterface).isRequired
+  book: PropTypes.shape(bookInterface).isRequired,
+  rateItem: PropTypes.func.isRequired
 };
 
 export default Book;

@@ -32,7 +32,8 @@ const Header = (props: {
                 <span className='header__user-name'>
                   {props.user.userData.firstName}
                 </span>
-                <span onClick={() => props.logoutUser()}>Logout</span>
+                <span className='logout-btn'
+                  onClick={() => props.logoutUser()}>Logout</span>
               </div>
             </li>
           ) : (

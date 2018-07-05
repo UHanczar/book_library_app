@@ -2,14 +2,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import BookItem from './BookItem';
-import { getBookItem, removeBookItem } from '../../actions/bookItemActions';
+import {
+  getBookItem,
+  removeBookItem,
+  rateItem
+} from '../../actions/bookItemActions';
 
-const mapStateToProps = ({ bookItem }) => ({ bookItem });
+const mapStateToProps = ({ bookItem, user }) => ({ bookItem, user });
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getBookItem,
-    removeBookItem
+    removeBookItem,
+    rateItem
   }, dispatch);
 };
 

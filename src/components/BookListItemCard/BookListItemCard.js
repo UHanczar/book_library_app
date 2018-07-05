@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 import StarRatings from 'react-star-ratings';
+import { calculateBookRating } from '../../helpers/helpers';
 
 import './book-list-item-card.scss';
 
@@ -27,7 +28,7 @@ const BookListItem = (props: {
         ))}
       </p>
       <StarRatings
-        rating={parseFloat(props.item.rating)}
+        rating={parseFloat(calculateBookRating(props.item.ratingData))}
         starRatedColor='orange'
         numberOfStars={5}
         name='rating'

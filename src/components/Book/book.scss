@@ -20,6 +20,21 @@
     align-items: flex-start;
     padding-top: 20px;
 
+    .rating__container {
+      display: flex;
+      flex-direction: column;
+
+      .rating-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .rating-body {
+        font-size: 16px;
+        margin-bottom: 30px;
+      }
+    }
+
     .RRT__container {
       width: 100%;
 
@@ -98,6 +113,10 @@
 
         .access-text {
           color: #b1b1b1;
+        }
+
+        .access-text-red {
+          color: #e93321;
         }
       }
 

@@ -20,6 +20,10 @@ export const FETCH_BOOK_ITEM = 'FETCH_BOOK_ITEM';
 export const FETCH_BOOK_ITEM_SUCCESS = 'FETCH_BOOK_ITEM_SUCCESS';
 export const FETCH_BOOK_ITEM_ERROR = 'FETCH_BOOK_ITEM_ERROR';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const RATE_ITEM = 'RATE_ITEM';
+export const RATE_ITEM_SUCCESS = 'RATE_ITEM_SUCCESS';
+export const RATE_ITEM_ERROR = 'RATE_ITEM_ERROR';
+
 
 // filterActions
 export const FILTER_BY_DATE = 'FILTER_BY_DATE';

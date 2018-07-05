@@ -28,7 +28,7 @@ class BookItem extends Component {
   }
 
   renderBookItem() {
-    const { bookItem } = this.props;
+    const { bookItem, rateItem, user } = this.props;
 
     if (!bookItem.loading && !bookItem.book) {
       return null;
@@ -36,7 +36,11 @@ class BookItem extends Component {
       return <Loader />;
     } else if (!bookItem.loading && bookItem.book) {
       return (
-        <Book book={bookItem.book} />
+        <Book
+          book={bookItem.book}
+          rateItem={rateItem}
+          user={user}
+        />
       );
     }
   }

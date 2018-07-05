@@ -2,7 +2,8 @@ import {
   FETCH_BOOK_ITEM,
   FETCH_BOOK_ITEM_SUCCESS,
   FETCH_BOOK_ITEM_ERROR,
-  REMOVE_ITEM
+  REMOVE_ITEM,
+  RATE_ITEM_SUCCESS
 } from '../actions/types';
 
 const initialState = {
@@ -32,6 +33,14 @@ const bookItemReducer = (state = initialState, action) => {
         ...state,
         book: null
       };
+    case RATE_ITEM_SUCCESS:
+      return {
+        ...state,
+        book: {
+          ...state.book,
+          ratingData: action.payload
+        }
+      }
     default:
       return state;
   }

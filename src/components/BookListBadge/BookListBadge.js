@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 import StarRatings from 'react-star-ratings';
+import { calculateBookRating } from '../../helpers/helpers';
 
 import './book-list-badge.scss';
 
@@ -38,7 +39,7 @@ const BookListBadge = (props: {
           <p className='collection__year'>{item.year}</p>
           <div className='badge collection__rating'>
             <StarRatings
-              rating={parseFloat(item.rating)}
+              rating={parseFloat(calculateBookRating(item.ratingData))}
               starRatedColor='orange'
               numberOfStars={5}
               name='rating'

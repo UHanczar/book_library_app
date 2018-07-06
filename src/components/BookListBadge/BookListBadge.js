@@ -14,7 +14,7 @@ const BookListBadge = (props: {
     pathName: string,
     _id: string,
     name: string,
-    authors: Array<String>,
+    authors: Array<string>,
     publisher: string,
     year: string,
     rating: string
@@ -33,7 +33,10 @@ const BookListBadge = (props: {
             alt={item.pathName}
             className='collection__image'
           />
-          <p className='collection__authors'>{item.authors.map(author => <span key={uniqid()}>{author}</span>)}</p>
+          <p className='collection__authors'>{item.authors.map((author, i) => <span key={uniqid()}>{
+            item.authors.length > 1
+              && item.authors.length !== 0 && i < item.authors.length - 1 ?
+              `${author}, ` : author}</span>)}</p>
           <p className='collection__title'>{item.name}</p>
           <p className='collection__publisher'>{item.publisher}</p>
           <p className='collection__year'>{item.year}</p>

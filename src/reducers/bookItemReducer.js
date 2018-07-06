@@ -33,12 +33,14 @@ const bookItemReducer = (state = initialState, action) => {
       };
     case FETCH_BOOK_ITEM_SUCCESS:
       return {
+        ...state,
         loading: false,
         book: action.payload
       };
     case ASSIGN_BOOK_SUCCESS:
     case UNASSIGN_BOOK_SUCCESS:
       return {
+        ...state,
         assigning: false,
         book: action.payload
       };

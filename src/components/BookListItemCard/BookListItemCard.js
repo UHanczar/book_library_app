@@ -23,8 +23,11 @@ const BookListItem = (props: {
     <div className='card-content'>
       <p className='card-content-title'>{props.item.name}</p>
       <p className='card-content-authors'>
-        {props.item.authors.map(author => (
-          <span key={uniqid()}>{author}</span>
+        {props.item.authors.map((author, i) => (
+          <span key={uniqid()}>{
+            props.item.authors.length > 1
+              && props.item.authors.length !== 0 && i < props.item.authors.length - 1 ?
+              `${author}, ` : author}</span>
         ))}
       </p>
       <StarRatings

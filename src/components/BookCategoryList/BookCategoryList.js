@@ -9,14 +9,20 @@ import ShowSidebarButtons from '../ShowSidebarButtons/ShowSidebarButtons';
 import BookListItemCard from '../BookListItemCard/BookListItemCard';
 import BookListBadge from '../BookListBadge/BookListBadge';
 
-class BookCategoryList extends Component {
-  constructor(props: {
-    toggleSidebar: Function,
-    toggleFilterBar: Function,
-    toggleBookListTableView: Function,
-    bookList: Object,
-    showAsTable: Boolean
-  }) {
+type Props = {
+  toggleSidebar: Function,
+  toggleFilterBar: Function,
+  toggleBookListTableView: Function,
+  bookList: Object,
+  showAsTable: Boolean
+};
+
+type State = {
+  filteredList: []
+};
+
+class BookCategoryList extends Component<Props, State> {
+  constructor(props: Object) {
     super(props);
 
     this.state = {

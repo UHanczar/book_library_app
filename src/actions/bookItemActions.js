@@ -17,7 +17,6 @@ import {
   UNASSIGN_BOOK_SUCCESS,
   UNASSIGN_BOOK_ERROR
 } from '../actions/types';
-import { updateBookListRateData } from './bookListActions';
 
 export const getBookItem = bookId => async (dispatch) => {
   try {
@@ -71,7 +70,6 @@ export const rateItem = rating => async (dispatch, getState) => {
         type: RATE_ITEM_SUCCESS,
         payload: ratedBook.data.ratingData
       });
-      // updateBookListRateData(bookItem.book._id, ratedBook.data.ratingData, dispatch);
     } else {
       const errorMessage = flashErrorMessage(ratedBook.data.message);
       dispatch(errorMessage);

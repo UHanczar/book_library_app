@@ -9,6 +9,7 @@
     "globals": {
       "window": true,
       "document": true,
+      "localStorage": true,
       "jest": true,
       "describe": true,
       "it": true,

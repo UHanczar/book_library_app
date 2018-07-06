@@ -7,7 +7,7 @@ import uniqId from 'uniqid';
 import './book-info.scss';
 
 const BookInfo = (props: {
-  authors: Array<String>,
+  authors: Array<string>,
   publisher: String,
   year: String
 }) => (
@@ -21,8 +21,10 @@ const BookInfo = (props: {
         <div className='book__info-container-authors-data-text'>
           {props.authors.map((author, i) => (
             <span key={uniqId()}>{
-              props.authors.length > 1 && props.authors.length !== 0 && i < props.authors.length - 1 ?
-                `${author}, `: author}</span>
+              props.authors.length > 1
+                && props.authors.length !== 0 && i < props.authors.length - 1 ?
+                `${author}, ` : author}
+            </span>
               ))}
         </div>
       </div>

@@ -13,20 +13,31 @@ import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
 import BookManagement from '../BookManagement/BookManagement';
 
-class Book extends Component {
-  constructor(props: {
-    book: Object
-  }) {
+type Props = {
+  book: Object,
+  user: Object,
+  updateBookListRateData: Function,
+  rateItem: Function,
+  assignItem: Function,
+  unassignItem: Function,
+  assigning: boolean
+};
+type State = {
+  rateUpdated: boolean
+};
+
+class Book extends Component<Props, State> {
+  constructor(props: Object) {
     super(props);
 
     this.state = {
       rateUpdated: false
     };
 
-    this.renderTabs = this.renderTabs.bind(this);
-    this.rateBook = this.rateBook.bind(this);
-    this.assignBookToUser = this.assignBookToUser.bind(this);
-    this.unassignBookToUser = this.unassignBookToUser.bind(this);
+    (this: any).renderTabs = this.renderTabs.bind(this);
+    (this: any).rateBook = this.rateBook.bind(this);
+    (this: any).assignBookToUser = this.assignBookToUser.bind(this);
+    (this: any).unassignBookToUser = this.unassignBookToUser.bind(this);
   }
 
   componentWillUnmount() {
@@ -43,22 +54,26 @@ class Book extends Component {
     });
   }
 
-  assignBookToUser(bookId, userId) {
+  assignBookToUser(bookId: string, userId: string) {
     this.props.assignItem(bookId, userId);
     this.setState({
       rateUpdated: true
     });
   }
 
-  unassignBookToUser(bookId, userId) {
+  unassignBookToUser(bookId: string) {
     this.props.unassignItem(bookId);
     this.setState({
       rateUpdated: true
     });
   }
 
-  renderTabs() {
-    const { assigning, book, user, assignItem, unassignItem } = this.props;
+  renderTabs(): any[] {
+    const {
+      assigning,
+      book,
+      user
+    } = this.props;
 
     const bookData = [
       {
@@ -103,7 +118,7 @@ class Book extends Component {
   }
 
   render() {
-    const { book, rateItem, user: { authenticated, userData, loading } } = this.props;
+    const { book, user: { authenticated, userData } } = this.props;
     const ratingData: any = authenticated && userData && book ?
       book.ratingData.filter(item => item.userId === userData._id) : 0;
     const userRating = ratingData.length > 0 ? parseInt(ratingData[0].rating, 10) : 0;
@@ -194,7 +209,11 @@ const bookInterface = {
 
 Book.propTypes = {
   book: PropTypes.shape(bookInterface).isRequired,
-  rateItem: PropTypes.func.isRequired
+  rateItem: PropTypes.func.isRequired,
+  updateBookListRateData: PropTypes.func.isRequired,
+  assignItem: PropTypes.func.isRequired,
+  unassignItem: PropTypes.func.isRequired,
+  assigning: PropTypes.bool.isRequired
 };
 
 export default Book;

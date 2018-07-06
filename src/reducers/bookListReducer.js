@@ -1,7 +1,8 @@
 import {
   FETCH_BOOK_LIST,
   FETCH_BOOK_LIST_SUCCESS,
-  FETCH_BOOK_LIST_ERROR
+  FETCH_BOOK_LIST_ERROR,
+  UPDATE_BOOK_LIST_RATE_DATA
 } from '../actions/types';
 
 const initialState = {
@@ -29,6 +30,16 @@ const bookListReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false
+      };
+    case UPDATE_BOOK_LIST_RATE_DATA:
+      return {
+        ...state,
+        list: state.list.map((book) => {
+          if (book._id === action.payload._id) {
+            return action.payload;
+          }
+          return book;
+        })
       };
     default:
       return state;

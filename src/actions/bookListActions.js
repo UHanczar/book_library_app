@@ -5,7 +5,8 @@ import { api } from '../../config/config';
 import {
   FETCH_BOOK_LIST,
   FETCH_BOOK_LIST_SUCCESS,
-  FETCH_BOOK_LIST_ERROR
+  FETCH_BOOK_LIST_ERROR,
+  UPDATE_BOOK_LIST_RATE_DATA
 } from '../actions/types';
 
 export const fetchBookList = () => async (dispatch) => {
@@ -29,3 +30,8 @@ export const fetchBookList = () => async (dispatch) => {
     dispatch(errorMessage);
   }
 };
+
+export const updateBookListRateData = book => ({
+  type: UPDATE_BOOK_LIST_RATE_DATA,
+  payload: book
+});

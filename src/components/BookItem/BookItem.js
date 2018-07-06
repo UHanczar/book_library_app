@@ -28,7 +28,14 @@ class BookItem extends Component {
   }
 
   renderBookItem() {
-    const { bookItem, rateItem, user } = this.props;
+    const {
+      bookItem,
+      rateItem,
+      assignItem,
+      unassignItem,
+      user,
+      updateBookListRateData
+    } = this.props;
 
     if (!bookItem.loading && !bookItem.book) {
       return null;
@@ -38,8 +45,12 @@ class BookItem extends Component {
       return (
         <Book
           book={bookItem.book}
+          assigning={bookItem.assigning}
           rateItem={rateItem}
           user={user}
+          unassignItem={unassignItem}
+          assignItem={assignItem}
+          updateBookListRateData={updateBookListRateData}
         />
       );
     }

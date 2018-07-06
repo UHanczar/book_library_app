@@ -89,7 +89,8 @@ class Main extends Component {
       bookList,
       filterByDate,
       filterByRate,
-      bookListFilter
+      bookListFilter,
+      fetchBookList
     } = this.props;
     const {
       categorySidebarOpened,
@@ -165,6 +166,7 @@ class Main extends Component {
                   toggleFilterBar={this.toggleFilterBar}
                   toggleBookListTableView={this.toggleBookListTableView}
                   showAsTable={showAsTable}
+                  fetchBookList={fetchBookList}
                 />
               ))}
             />

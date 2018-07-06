@@ -29,7 +29,7 @@ const BookInfo = (props: {
     </div>
     <div className='book__info-container-publisher'>
       <div className='book__info-container-publisher-pic'>
-        <i className='material-icons'>library_books</i>
+        <i className='material-icons'>portrait</i>
       </div>
       <div className='book__info-container-publisher-data'>
         <div className='book__info-container-publisher-data-title'>Publisher</div>
@@ -47,7 +47,7 @@ const BookInfo = (props: {
     </div>
     <div className='book__info-container-pages'>
       <div className='book__info-container-publisher-pic'>
-        <i className='material-icons'>access_time</i>
+        <i className='material-icons'>library_books</i>
       </div>
       <div className='book__info-container-pages-data'>
         <div className='book__info-container-pages-data-title'>Pages</div>

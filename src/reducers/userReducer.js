@@ -5,13 +5,15 @@ import {
   CHECK_USER,
   CHECK_USER_SUCCESS,
   CHECK_USER_ERROR,
+  LOAD_USER_LIST_SUCCESS,
   LOGOUT_USER
 } from '../actions/types';
 
 const initialState = {
   loading: false,
   userData: null,
-  authenticated: false
+  authenticated: false,
+  userList: null
 };
 
 const userReducer = (state = initialState, action) => {
@@ -48,12 +50,13 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: false
       };
-    case LOGOUT_USER:
+    case LOAD_USER_LIST_SUCCESS:
       return {
         ...state,
-        userData: null,
-        authenticated: false
+        userList: action.payload
       };
+    case LOGOUT_USER:
+      return initialState;
     default:
       return state;
   }

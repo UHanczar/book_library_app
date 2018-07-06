@@ -113,6 +113,10 @@
 
         .access-text {
           color: #b1b1b1;
+
+          &-overdue {
+            color: red;
+          }
         }
 
         .access-text-red {

@@ -11,6 +11,7 @@ import './book.scss';
 import { calculateBookRating, getReturnDate } from '../../helpers/helpers';
 import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
+import BookManagement from '../BookManagement/BookManagement';
 
 class Book extends Component {
   constructor(props: {
@@ -18,11 +19,46 @@ class Book extends Component {
   }) {
     super(props);
 
+    this.state = {
+      rateUpdated: false
+    };
+
     this.renderTabs = this.renderTabs.bind(this);
+    this.rateBook = this.rateBook.bind(this);
+    this.assignBookToUser = this.assignBookToUser.bind(this);
+    this.unassignBookToUser = this.unassignBookToUser.bind(this);
+  }
+
+  componentWillUnmount() {
+    const { book, updateBookListRateData } = this.props;
+    if (this.state.rateUpdated) {
+      updateBookListRateData(book);
+    }
+  }
+
+  rateBook(rating: number) {
+    this.props.rateItem(rating);
+    this.setState({
+      rateUpdated: true
+    });
+  }
+
+  assignBookToUser(bookId, userId) {
+    this.props.assignItem(bookId, userId);
+    this.setState({
+      rateUpdated: true
+    });
+  }
+
+  unassignBookToUser(bookId, userId) {
+    this.props.unassignItem(bookId);
+    this.setState({
+      rateUpdated: true
+    });
   }
 
   renderTabs() {
-    const { book } = this.props;
+    const { assigning, book, user, assignItem, unassignItem } = this.props;
 
     const bookData = [
       {
@@ -39,6 +75,23 @@ class Book extends Component {
         data: <BookDescription description={book.description} />
       }
     ];
+
+    const bookManagement = {
+      name: 'Management',
+      data: <BookManagement
+        userList={user.userList}
+        assignItem={this.assignBookToUser}
+        unassignItem={this.unassignBookToUser}
+        id={book._id}
+        currentReader={book.currentReader}
+        isAvailable={book.isAvailable}
+        assigning={assigning}
+      />
+    };
+
+    if (user.userData && user.userData.isAdmin) {
+      bookData.push(bookManagement);
+    }
 
     return bookData.map((item, index) => ({
       key: index,
@@ -72,7 +125,7 @@ class Book extends Component {
                     starDimension='25px'
                     isAggregateRating
                     starSpacing='6px'
-                    changeRating={rating => rateItem(rating)}
+                    changeRating={rating => this.rateBook(rating)}
                   />
                 ) : (
                   <StarRatings
@@ -118,7 +171,7 @@ class Book extends Component {
             </div>
             <div className='card__data-access-return-date'>
               <p className='access-title'>Return:</p>
-              <p className='access-text'>{!book.isAvailable ? getReturnDate(book.returnDate) : null}</p>
+              <p className={book.returnDate > Date.now() ? 'access-text' : 'access-text-overdue'}>{!book.isAvailable ? getReturnDate(book.returnDate) : null}</p>
             </div>
           </div>
         </div>

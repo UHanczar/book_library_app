@@ -9,8 +9,34 @@ import {
   CHECK_USER,
   CHECK_USER_SUCCESS,
   CHECK_USER_ERROR,
-  LOGOUT_USER
+  LOGOUT_USER,
+  LOAD_USER_LIST,
+  LOAD_USER_LIST_SUCCESS,
+  LOAD_USER_LIST_ERROR
 } from './types';
+
+const loadUserList = async (dispatch) => {
+  try {
+    dispatch({
+      type: LOAD_USER_LIST
+    });
+
+    const result = await axios.get(`${api}/userlist`);
+
+    if (result.data.success) {
+      dispatch({
+        type: LOAD_USER_LIST_SUCCESS,
+        payload: result.data.userList
+      });
+    }
+  } catch (error) {
+    dispatch({
+      type: LOAD_USER_LIST_ERROR
+    });
+    const errorMessage = flashErrorMessage('Error with loading list of users.');
+    dispatch(errorMessage);
+  }
+};
 
 export const loginUser = history => async (dispatch, getState) => {
   try {
@@ -24,6 +50,10 @@ export const loginUser = history => async (dispatch, getState) => {
 
     if (result.data.success) {
       localStorage.setItem('token', result.data.token);
+
+      if (result.data.user.isAdmin) {
+        loadUserList(dispatch);
+      }
 
       dispatch({
         type: LOGIN_USER_SUCCESS,
@@ -57,10 +87,21 @@ export const checkUser = token => async (dispatch) => {
     });
 
     if (result.data.success) {
+      if (result.data.user.isAdmin) {
+        loadUserList(dispatch);
+      }
+
       dispatch({
         type: CHECK_USER_SUCCESS,
         payload: result.data.user
       });
+    } else {
+      dispatch({
+        type: CHECK_USER_ERROR
+      });
+
+      const errorMessage = flashErrorMessage(result.data.message);
+      dispatch(errorMessage);
     }
   } catch (error) {
     console.log('Error with checking user token');

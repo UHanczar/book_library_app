@@ -5,20 +5,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 import StarRatings from 'react-star-ratings';
+
+import { bookInterface } from '../../models/reactPropTypes';
+import type { bookInterfaceFlow } from '../../models/flowTypes';
 import { calculateBookRating } from '../../helpers/helpers';
 
 import './book-list-badge.scss';
 
 const BookListBadge = (props: {
-  bookList: Array<{
-    pathName: string,
-    _id: string,
-    name: string,
-    authors: Array<string>,
-    publisher: string,
-    year: string,
-    rating: string
-  }>
+  bookList: Array<bookInterfaceFlow>
 }) => (
   <div className='badge__container'>
     <div className='collection'>
@@ -33,10 +28,14 @@ const BookListBadge = (props: {
             alt={item.pathName}
             className='collection__image'
           />
-          <p className='collection__authors'>{item.authors.map((author, i) => <span key={uniqid()}>{
+          <p className='collection__authors'>{item.authors.map((author, i) => (
+            <span key={uniqid()}>{
             item.authors.length > 1
               && item.authors.length !== 0 && i < item.authors.length - 1 ?
-              `${author}, ` : author}</span>)}</p>
+              `${author}, ` : author}
+            </span>
+          ))}
+          </p>
           <p className='collection__title'>{item.name}</p>
           <p className='collection__publisher'>{item.publisher}</p>
           <p className='collection__year'>{item.year}</p>
@@ -58,17 +57,8 @@ const BookListBadge = (props: {
   </div>
 );
 
-const bookItem = PropTypes.shape({
-  pathname: PropTypes.string,
-  name: PropTypes.string,
-  authors: PropTypes.arrayOf(PropTypes.string),
-  rating: PropTypes.string,
-  _id: PropTypes.string
-});
-
-
 BookListBadge.propTypes = {
-  bookList: PropTypes.arrayOf(bookItem)
+  bookList: PropTypes.arrayOf(PropTypes.shape(bookInterface))
 };
 
 export default BookListBadge;

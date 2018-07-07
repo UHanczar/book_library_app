@@ -9,7 +9,7 @@ import './flash-messages-list.scss';
 import FlashMessage from '../FlashMessage/FlashMessage';
 
 const FlashMessagesList = (props: {
-  flash: Object,
+  flash: Array<flashMessageType>,
   removeMessage: Function
 }) => {
   return (
@@ -26,10 +26,12 @@ const FlashMessagesList = (props: {
   );
 };
 
-const flashInterface = PropTypes.shape(flashMessageType);
-
 FlashMessagesList.propTypes = {
-  flash: PropTypes.arrayOf(flashInterface),
+  flash: PropTypes.arrayOf(PropTypes.shape({
+    message: PropTypes.string,
+    id: PropTypes.string,
+    isError: PropTypes.bool
+  })),
   removeMessage: PropTypes.func.isRequired
 };
 

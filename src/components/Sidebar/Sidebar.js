@@ -4,16 +4,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
 
-import './sidebar.scss';
+import { categoryInterface } from '../../models/reactPropTypes';
+import type { categoryInterfaceFlow } from '../../models/flowTypes';
 
 import SidebarItem from '../SidebarItem/SidebarItem';
 
-class SideBar extends Component {
-  constructor(props: {
-    bookCategories: Array<{
-    categoryName: string,
-    categoryPathName: string
-  }>}) {
+import './sidebar.scss';
+
+type Props = {
+  bookCategories: Array<categoryInterfaceFlow>,
+  fetchBookCategories: Function
+};
+
+class SideBar extends Component<Props> {
+  constructor(props: Props) {
     super(props);
   }
 
@@ -40,13 +44,8 @@ class SideBar extends Component {
   }
 }
 
-const categoryInterface = PropTypes.shape({
-  categoryName: PropTypes.string,
-  categoryPathName: PropTypes.string
-});
-
 SideBar.propTypes = {
-  bookCategories: PropTypes.arrayOf(categoryInterface),
+  bookCategories: PropTypes.arrayOf(PropTypes.shape(categoryInterface)),
   fetchBookCategories: PropTypes.func.isRequired
 };
 

@@ -1,15 +1,18 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Link } from 'react-router-dom';
 import SideNav, { Nav, NavIcon, NavText } from 'react-sidenav';
 import uniqid from 'uniqid';
 
-import './main.scss';
-
 import {
   filterByDateHelper,
   filterByRateHelper
 } from '../../helpers/helpers';
+import { bookInterface, categoryInterface } from '../../models/reactPropTypes';
+import type { bookInterfaceFlow, categoryInterfaceFlow } from '../../models/flowTypes';
+
 import Loader from '../Loader/Loader';
 import SideBar from '../Sidebar/SidebarContainer';
 import Login from '../Login/LoginContainer';
@@ -20,8 +23,32 @@ import BookList from '../BookList/BookList';
 import BookItem from '../BookItem/BookItemContainer';
 import BookCategoryList from '../BookCategoryList/BookCategoryList';
 
-class Main extends Component {
-  constructor(props) {
+import './main.scss';
+
+type Props = {
+  fetchBookList: Function,
+  bookCategories: Array<categoryInterfaceFlow>,
+  bookList: {
+    loading: boolean,
+    list: Array<bookInterfaceFlow>
+  },
+  filterByDate: Function,
+  filterByRate: Function,
+  bookListFilter: {
+    byDateFilter: boolean,
+    byRateFilter: boolean
+  },
+  fetchBookList: Function
+};
+
+type State = {
+  categorySidebarOpened: boolean,
+  filterSidebarOpened: boolean,
+  showAsTable: boolean
+};
+
+class Main extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -30,9 +57,9 @@ class Main extends Component {
       showAsTable: false
     };
 
-    this.toggleSidebar = this.toggleSidebar.bind(this);
-    this.toggleFilterBar = this.toggleFilterBar.bind(this);
-    this.toggleBookListTableView = this.toggleBookListTableView.bind(this);
+    (this: any).toggleSidebar = this.toggleSidebar.bind(this);
+    (this: any).toggleFilterBar = this.toggleFilterBar.bind(this);
+    (this: any).toggleBookListTableView = this.toggleBookListTableView.bind(this);
   }
 
   componentDidMount() {
@@ -203,21 +230,6 @@ class Main extends Component {
   }
 }
 
-const categoryInterface = PropTypes.shape({
-  categoryName: PropTypes.string,
-  categoryPathName: PropTypes.string
-});
-
-const bookInterface = PropTypes.shape({
-  authors: PropTypes.arrayOf(PropTypes.string),
-  name: PropTypes.string,
-  pathName: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
-  pages: PropTypes.string,
-  description: PropTypes.string
-});
-
 Main.propTypes = {
   filterByDate: PropTypes.func.isRequired,
   filterByRate: PropTypes.func.isRequired,
@@ -226,10 +238,10 @@ Main.propTypes = {
     byDateFilter: PropTypes.bool,
     byRateFilter: PropTypes.bool
   }).isRequired,
-  bookCategories: PropTypes.arrayOf(categoryInterface),
+  bookCategories: PropTypes.arrayOf(PropTypes.shape(categoryInterface)),
   bookList: PropTypes.shape({
     loading: PropTypes.bool,
-    list: PropTypes.arrayOf(bookInterface)
+    list: PropTypes.arrayOf(PropTypes.shape(bookInterface))
   })
 };
 

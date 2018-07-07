@@ -1,12 +1,29 @@
+// @flow
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-import './login.scss';
 import { validateLoginFormErrors } from '../../helpers/helpers';
+import { userInterface } from '../../models/reactPropTypes';
+import type { userInterfaceFlow } from '../../models/flowTypes';
+
 import Loader from '../Loader/Loader';
 
-class Login extends Component {
+import './login.scss';
+
+type Props = {
+  handleSubmit: Function,
+  loginUser: Function,
+  user: {
+    loading: boolean,
+    userData: userInterfaceFlow
+  },
+  history: Object,
+  login: Object
+}
+
+class Login extends Component<Props> {
   render() {
     const {
       handleSubmit,
@@ -60,7 +77,8 @@ class Login extends Component {
 
 Login.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  loginUser: PropTypes.func.isRequired
+  loginUser: PropTypes.func.isRequired,
+  user: PropTypes.shape(userInterface)
 };
 
 export default reduxForm({

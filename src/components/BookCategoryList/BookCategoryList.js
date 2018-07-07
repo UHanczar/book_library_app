@@ -18,7 +18,7 @@ type Props = {
 };
 
 type State = {
-  filteredList: []
+  filteredList: any[]
 };
 
 class BookCategoryList extends Component<Props, State> {

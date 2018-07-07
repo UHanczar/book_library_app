@@ -4,19 +4,29 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './book-item.scss';
+
+import { bookInterface } from '../../models/reactPropTypes';
+
 import Loader from '../Loader/Loader';
 import Book from '../Book/Book';
 
-class BookItem extends Component {
-  constructor(props: {
-    getBookItem: Function,
-    removeBookItem: Function,
-    bookItem: Object,
-    match: Object
-  }) {
+type Props = {
+  getBookItem: Function,
+  removeBookItem: Function,
+  rateItem: Function,
+  assignItem: Function,
+  unassignItem: Function,
+  updateBookListRateData: Function,
+  user: Object,
+  bookItem: Object,
+  match: Object
+};
+
+class BookItem extends Component<Props> {
+  constructor(props: Props) {
     super(props);
 
-    this.renderBookItem = this.renderBookItem.bind(this);
+    (this: any).renderBookItem = this.renderBookItem.bind(this);
   }
 
   componentDidMount() {
@@ -65,16 +75,6 @@ class BookItem extends Component {
   }
 }
 
-const bookInterface = PropTypes.shape({
-  authors: PropTypes.arrayOf(PropTypes.string),
-  name: PropTypes.string,
-  pathName: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
-  pages: PropTypes.string,
-  description: PropTypes.string
-});
-
 BookItem.propTypes = {
   getBookItem: PropTypes.func.isRequired,
   removeBookItem: PropTypes.func.isRequired,
@@ -86,7 +86,11 @@ BookItem.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string
     })
-  }).isRequired
+  }).isRequired,
+  rateItem: PropTypes.func.isRequired,
+  assignItem: PropTypes.func.isRequired,
+  unassignItem: PropTypes.func.isRequired,
+  updateBookListRateData: PropTypes.func.isRequired
 };
 
 export default BookItem;

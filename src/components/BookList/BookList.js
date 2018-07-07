@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import './book-list.scss';
 
+import { bookInterface } from '../../models/reactPropTypes';
+
 import ShowSidebarButtons from '../ShowSidebarButtons/ShowSidebarButtons';
 import BookListItemCard from '../BookListItemCard/BookListItemCard';
 import BookListBadge from '../BookListBadge/BookListBadge';
@@ -13,7 +15,7 @@ const BookList = (props: {
   toggleSidebar: Function,
   toggleFilterBar: Function,
   toggleBookListTableView: Function,
-  bookList: Object,
+  bookList: any[],
   showAsTable: Boolean
 }) => {
   return (
@@ -35,21 +37,11 @@ const BookList = (props: {
   );
 };
 
-const bookInterface = PropTypes.shape({
-  authors: PropTypes.arrayOf(PropTypes.string),
-  name: PropTypes.string,
-  pathName: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
-  pages: PropTypes.string,
-  description: PropTypes.string
-});
-
 BookList.propTypes = {
   toggleSidebar: PropTypes.func.isRequired,
   toggleFilterBar: PropTypes.func.isRequired,
   toggleBookListTableView: PropTypes.func.isRequired,
-  bookList: PropTypes.arrayOf(bookInterface),
+  bookList: PropTypes.arrayOf(PropTypes.shape(bookInterface)),
   showAsTable: PropTypes.bool.isRequired
 };
 

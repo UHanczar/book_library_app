@@ -5,12 +5,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 import StarRatings from 'react-star-ratings';
+
 import { calculateBookRating } from '../../helpers/helpers';
+import { bookInterface } from '../../models/reactPropTypes';
+import type { bookInterfaceFlow } from '../../models/flowTypes';
 
 import './book-list-item-card.scss';
 
 const BookListItem = (props: {
-  item: Object
+  item: bookInterfaceFlow
 }) => (
   <Link to={`/book/${props.item._id}`} className='card hoverable card-item'>
     <div className='card-image'>
@@ -27,7 +30,8 @@ const BookListItem = (props: {
           <span key={uniqid()}>{
             props.item.authors.length > 1
               && props.item.authors.length !== 0 && i < props.item.authors.length - 1 ?
-              `${author}, ` : author}</span>
+              `${author}, ` : author}
+          </span>
         ))}
       </p>
       <StarRatings
@@ -45,13 +49,7 @@ const BookListItem = (props: {
 );
 
 BookListItem.propTypes = {
-  item: PropTypes.shape({
-    pathName: PropTypes.string,
-    name: PropTypes.string,
-    authors: PropTypes.arrayOf(PropTypes.string),
-    rating: PropTypes.string,
-    _id: PropTypes.string
-  }).isRequired
+  item: PropTypes.shape(bookInterface).isRequired
 };
 
 export default BookListItem;

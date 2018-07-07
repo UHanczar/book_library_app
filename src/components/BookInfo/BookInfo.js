@@ -9,7 +9,8 @@ import './book-info.scss';
 const BookInfo = (props: {
   authors: Array<string>,
   publisher: String,
-  year: String
+  year: String,
+  pages: String
 }) => (
   <div className='book__info-container'>
     <div className='book__info-container-authors'>
@@ -62,7 +63,8 @@ const BookInfo = (props: {
 BookInfo.propTypes = {
   authors: PropTypes.arrayOf(PropTypes.string).isRequired,
   publisher: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired
+  year: PropTypes.string.isRequired,
+  pages: PropTypes.string.isRequired
 };
 
 export default BookInfo;

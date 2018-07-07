@@ -1,7 +1,11 @@
 // @flow
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import { userDataInterface } from '../../models/reactPropTypes';
+import type { userInterfaceFlow } from '../../models/flowTypes';
 
 import './header.scss';
 
@@ -9,7 +13,7 @@ const Header = (props: {
   logoutUser: Function,
   user: {
     authenticated: boolean,
-    userData: Object
+    userData: userInterfaceFlow
 }}) => (
   <div className='header__container'>
     <nav className='navbar-fixed light-blue lighten-2'>
@@ -32,8 +36,12 @@ const Header = (props: {
                 <span className='header__user-name'>
                   {props.user.userData.firstName}
                 </span>
-                <span className='logout-btn'
-                  onClick={() => props.logoutUser()}>Logout</span>
+                <span
+                  className='logout-btn'
+                  onClick={() => props.logoutUser()}
+                >
+                  Logout
+                </span>
               </div>
             </li>
           ) : (
@@ -51,5 +59,13 @@ const Header = (props: {
     </nav>
   </div>
 );
+
+Header.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  user: PropTypes.shape({
+    authenticated: PropTypes.bool,
+    userData: PropTypes.shape(userDataInterface)
+  })
+};
 
 export default Header;

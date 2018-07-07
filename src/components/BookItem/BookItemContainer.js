@@ -9,9 +9,7 @@ import {
   assignItem,
   unassignItem
 } from '../../actions/bookItemActions';
-import {
-  updateBookListRateData
-} from '../../actions/bookListActions';
+import { updateBookListRateData } from '../../actions/bookListActions';
 
 const mapStateToProps = ({ bookItem, user }) => ({ bookItem, user });
 

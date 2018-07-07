@@ -9,6 +9,8 @@ import 'react-responsive-tabs/styles.css';
 import './book.scss';
 
 import { calculateBookRating, getReturnDate } from '../../helpers/helpers';
+import { bookInterface, userInterface } from '../../models/reactPropTypes';
+
 import BookInfo from '../BookInfo/BookInfo';
 import BookDescription from '../BookDescription/BookDescription';
 import BookManagement from '../BookManagement/BookManagement';
@@ -22,12 +24,13 @@ type Props = {
   unassignItem: Function,
   assigning: boolean
 };
+
 type State = {
   rateUpdated: boolean
 };
 
 class Book extends Component<Props, State> {
-  constructor(props: Object) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -195,25 +198,14 @@ class Book extends Component<Props, State> {
   }
 }
 
-const bookInterface = {
-  authors: PropTypes.arrayOf(PropTypes.string),
-  name: PropTypes.string,
-  pathName: PropTypes.string,
-  publisher: PropTypes.string,
-  year: PropTypes.string,
-  pages: PropTypes.string,
-  rating: PropTypes.string,
-  description: PropTypes.string,
-  isAvailable: PropTypes.bool
-};
-
 Book.propTypes = {
   book: PropTypes.shape(bookInterface).isRequired,
   rateItem: PropTypes.func.isRequired,
   updateBookListRateData: PropTypes.func.isRequired,
   assignItem: PropTypes.func.isRequired,
   unassignItem: PropTypes.func.isRequired,
-  assigning: PropTypes.bool.isRequired
+  assigning: PropTypes.bool.isRequired,
+  user: PropTypes.shape(userInterface).isRequired
 };
 
 export default Book;

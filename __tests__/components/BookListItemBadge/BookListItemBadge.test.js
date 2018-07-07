@@ -12,23 +12,23 @@ describe('BookListItemBadge tests', () => {
       pathName: 'pathName',
       name: 'name',
       authors: ['author'],
-      rating: '3',
+      ratingData: [{ rating: '2' }, { rating: '3' }],
       _id: '1'
     }];
     const options = new ReactRouterEnzymeContext();
-    wrapper = mount(
+    wrapper = (bl = bookList) => mount(
       <BookListBadge
-        bookList={bookList}
+        bookList={bl}
       />,
       options.get()
     );
   });
 
   it('should exist', () => {
-    expect(wrapper).toBeDefined();
+    expect(wrapper()).toBeDefined();
   });
 
   it('should render proper amount of badge bomponents', () => {
-    expect(wrapper.find('Link').length).toBe(1);
+    expect(wrapper().find('Link').length).toBe(1);
   });
 });

@@ -34,11 +34,13 @@ describe('MainContainer tests', () => {
           publisher: 'publ',
           year: '2016',
           pages: '341',
-          rating: '0',
+          ratingData: [{ rating: '2' }, { rating: '4' }],
           description: 'desc',
           isAvailable: true,
           currentReader: 'name',
-          _id: '1' }] },
+          _id: '1'
+        }]
+      },
       bookListFilter: {
         byDateFilter: false,
         byRateFilter: false

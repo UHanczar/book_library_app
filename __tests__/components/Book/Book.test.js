@@ -4,7 +4,22 @@ import Book from '../../../src/components/Book/Book';
 
 describe('Book tests', () => {
   let book;
-  const wrapper = item => mount(<Book book={item} />);
+  let user;
+  let assignItem;
+  let unassignItem;
+  let updateBookListRateData;
+  let assigning;
+  let rateItem;
+  const wrapper = (item, person, assign, unassign, update, manage, rate) => mount(
+    <Book
+      book={item}
+      user={person}
+      assignItem={assign}
+      unassignItem={unassign}
+      updateBookListRateData={update}
+      assigning={manage}
+      rateItem={rate}
+    />);
 
   describe('Book tests', () => {
     let conditionalWrapper;
@@ -16,12 +31,22 @@ describe('Book tests', () => {
         publisher: 'publ',
         year: '2016',
         pages: '341',
-        rating: '0',
+        ratingData: [{ rating: '3' }, { rating: '2' }],
         description: 'desc',
         isAvailable: true,
-        currentReader: 'name'
+        currentReader: 'name',
+        _id: 'adfasdfsadf'
       };
-      conditionalWrapper = wrapper(book);
+      user = {
+        authenticated: false,
+        userData: null
+      };
+      assignItem = jest.fn();
+      unassignItem = jest.fn();
+      updateBookListRateData = jest.fn();
+      rateItem = jest.fn();
+      assigning = false;
+      conditionalWrapper = wrapper(book, user, assignItem, unassignItem, updateBookListRateData, assigning, rateItem);
     });
 
     it('should exist', () => {

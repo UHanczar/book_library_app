@@ -1,24 +1,24 @@
 # Book Library App
 
-Simple book library application. 
+Simple book library application.
 
 ### Development
 
-For project start: 
+For project start:
 
 For installing build dependencies use npm or yarn:
 ```sh
 $ yarn install
 ```
 
-or 
+or
 
 ```sh
 $ npm install
 ```
 
 
-For runnin developer dev server use:
+For running developer dev server use:
 ```sh
 $ yarn start:dev
 ```

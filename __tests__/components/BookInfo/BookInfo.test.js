@@ -7,15 +7,18 @@ describe('BookInfo tests', () => {
   let authors;
   let publisher;
   let year;
+  let pages;
   beforeEach(() => {
     authors = ['John', 'Nick'];
     publisher = 'publicher';
     year = '1997';
+    pages = '334';
     wrapper = mount(
       <BookInfo
         authors={authors}
         publisher={publisher}
         year={year}
+        pages={pages}
       />
     );
   });
@@ -28,5 +31,6 @@ describe('BookInfo tests', () => {
     expect(wrapper.props().authors.length).toBe(2);
     expect(wrapper.props().publisher).toBe(publisher);
     expect(wrapper.props().year).toBe(year);
+    expect(wrapper.props().pages).toBe(pages);
   });
 });

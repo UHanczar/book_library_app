@@ -3,7 +3,7 @@ import ReactRouterEnzymeContext from 'react-router-enzyme-context';
 
 import BookListItemCard from '../../../src/components/BookListItemCard/BookListItemCard';
 
-describe('BookListItemCaed tests', () => {
+describe('BookListItemCard tests', () => {
   let wrapper;
   let item;
 
@@ -12,7 +12,7 @@ describe('BookListItemCaed tests', () => {
       pathName: 'pathName',
       name: 'name',
       authors: ['author'],
-      rating: '3',
+      ratingData: [{ rating: '3' }, { rating: '2' }],
       _id: '1'
     };
     const options = new ReactRouterEnzymeContext();

@@ -32,7 +32,7 @@ describe('BookLIst tests', () => {
       pathName: 'pathName',
       name: 'name',
       authors: ['author'],
-      rating: '3',
+      ratingData: [],
       _id: '1'
     }];
     toggleSidebar = jest.fn();

@@ -85,18 +85,7 @@ describe('Login tests', () => {
       handleSubmit = jest.fn();
       const initialState = {
         user: { authenticated: false, user: null, loading: true },
-        form: {
-          login: {
-            fields: {
-              login: {
-                touched: false
-              },
-              password: {
-                touched: false
-              }
-            }
-          }
-        }
+        form: 'login'
       };
 
       const mockStore = configureMockStore([thunk]);

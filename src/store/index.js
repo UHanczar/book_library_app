@@ -1,3 +1,5 @@
+// @flow
+
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
@@ -13,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
   middleware = [...middleware, logger];
 }
 
-const store = createStore(
+const store: Object = createStore(
   rootReducer,
   initialState,
   compose(

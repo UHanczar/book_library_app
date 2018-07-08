@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import uniqid from 'uniqid';
 
 import { categoryInterface } from '../../models/reactPropTypes';
-import type { categoryInterfaceFlow } from '../../models/flowTypes';
+import type { CategoryInterfaceFlow } from '../../models/flowTypes';
 
 import SidebarItem from '../SidebarItem/SidebarItem';
 
 import './sidebar.scss';
 
 type Props = {
-  bookCategories: Array<categoryInterfaceFlow>,
+  bookCategories: Array<CategoryInterfaceFlow>,
   fetchBookCategories: Function
 };
 

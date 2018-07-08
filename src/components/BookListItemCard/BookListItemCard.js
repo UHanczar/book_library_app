@@ -8,12 +8,12 @@ import StarRatings from 'react-star-ratings';
 
 import { calculateBookRating } from '../../helpers/helpers';
 import { bookInterface } from '../../models/reactPropTypes';
-import type { bookInterfaceFlow } from '../../models/flowTypes';
+import type { BookInterfaceFlow } from '../../models/flowTypes';
 
 import './book-list-item-card.scss';
 
 const BookListItem = (props: {
-  item: bookInterfaceFlow
+  item: BookInterfaceFlow
 }) => (
   <Link to={`/book/${props.item._id}`} className='card hoverable card-item'>
     <div className='card-image'>

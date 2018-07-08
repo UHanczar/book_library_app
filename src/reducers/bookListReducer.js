@@ -1,3 +1,5 @@
+// @flow
+
 import {
   FETCH_BOOK_LIST,
   FETCH_BOOK_LIST_SUCCESS,
@@ -5,12 +7,13 @@ import {
   UPDATE_BOOK_LIST_RATE_DATA
 } from '../actions/types';
 
+
 const initialState = {
   loading: false,
   list: null
 };
 
-const bookListReducer = (state = initialState, action) => {
+const bookListReducer = (state: Object = initialState, action: Object): Object => {
   switch (action.type) {
     case FETCH_BOOK_LIST:
       return {

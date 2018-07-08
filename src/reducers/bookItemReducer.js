@@ -1,3 +1,5 @@
+// @flow
+
 import {
   FETCH_BOOK_ITEM,
   FETCH_BOOK_ITEM_SUCCESS,
@@ -18,7 +20,7 @@ const initialState = {
   book: null
 };
 
-const bookItemReducer = (state = initialState, action) => {
+const bookItemReducer = (state: Object = initialState, action: Object): Object => {
   switch (action.type) {
     case FETCH_BOOK_ITEM:
       return {

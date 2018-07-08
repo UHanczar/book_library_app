@@ -11,7 +11,7 @@ import {
   filterByRateHelper
 } from '../../helpers/helpers';
 import { bookInterface, categoryInterface } from '../../models/reactPropTypes';
-import type { bookInterfaceFlow, categoryInterfaceFlow } from '../../models/flowTypes';
+import type { BookInterfaceFlow, CategoryInterfaceFlow } from '../../models/flowTypes';
 
 import Loader from '../Loader/Loader';
 import SideBar from '../Sidebar/SidebarContainer';
@@ -27,10 +27,10 @@ import './main.scss';
 
 type Props = {
   fetchBookList: Function,
-  bookCategories: Array<categoryInterfaceFlow>,
+  bookCategories: Array<CategoryInterfaceFlow>,
   bookList: {
     loading: boolean,
-    list: Array<bookInterfaceFlow>
+    list: Array<BookInterfaceFlow>
   },
   filterByDate: Function,
   filterByRate: Function,

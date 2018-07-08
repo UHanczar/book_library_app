@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import { validateLoginFormErrors } from '../../helpers/helpers';
 import { userInterface } from '../../models/reactPropTypes';
-import type { userInterfaceFlow } from '../../models/flowTypes';
+import type { UserInterfaceFlow } from '../../models/flowTypes';
 
 import Loader from '../Loader/Loader';
 
@@ -17,7 +17,7 @@ type Props = {
   loginUser: Function,
   user: {
     loading: boolean,
-    userData: userInterfaceFlow
+    userData: UserInterfaceFlow
   },
   history: Object,
   login: Object

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { userDataInterface } from '../../models/reactPropTypes';
-import type { userInterfaceFlow } from '../../models/flowTypes';
+import type { UserInterfaceFlow } from '../../models/flowTypes';
 
 import './header.scss';
 
@@ -13,7 +13,7 @@ const Header = (props: {
   logoutUser: Function,
   user: {
     authenticated: boolean,
-    userData: userInterfaceFlow
+    userData: UserInterfaceFlow
 }}) => (
   <div className='header__container'>
     <nav className='navbar-fixed light-blue lighten-2'>

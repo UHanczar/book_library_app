@@ -53,7 +53,7 @@ describe('BookDescription tests', () => {
 
   describe('conditional render tests', () => {
     it('should call unassignItem on unassign button click', () => {
-      const conditionalWrapper = wrapper(false, { _id: '1' })
+      const conditionalWrapper = wrapper(false, { _id: '1' });
       conditionalWrapper.find('.btn__group-unassign').simulate('click');
       expect(wrapper().props().unassignItem).toBeCalled();
     });

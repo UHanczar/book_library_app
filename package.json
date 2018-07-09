@@ -21,7 +21,9 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}",
       "!**/node_modules/**",
-      "!**/vendor/**"
+      "!**/vendor/**",
+      "!**/src/models/**",
+      "!**/src/reducers/index.js"
     ]
   },
   "dependencies": {

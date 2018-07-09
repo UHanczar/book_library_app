@@ -51,4 +51,11 @@ describe('filter reducer actions', () => {
       byRateFilter: true
     });
   });
+
+  it('should not change state when no action occurs', () => {
+    expect(filterReducer()).toEqual({
+      byDateFilter: false,
+      byRateFilter: false
+    });
+  });
 });

@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-import { fetchBookList } from '../../src/actions/bookListActions';
+import {
+  fetchBookList,
+  updateBookListRateData
+} from '../../src/actions/bookListActions';
 import * as types from '../../src/actions/types';
 import { api } from '../../config/config';
 
@@ -81,5 +84,13 @@ describe('book list actions', () => {
 
     expect(dispatch.mock.calls[0][0]).toEqual(expected[0]);
     expect(dispatch.mock.calls[1][0]).toEqual({ type: 'FETCH_BOOK_LIST_ERROR' });
+  });
+
+  it('shoul return proper action type on updateBookListRateData action', () => {
+    const book = { name: 'js' };
+    expect(updateBookListRateData(book)).toEqual({
+      type: types.UPDATE_BOOK_LIST_RATE_DATA,
+      payload: book
+    });
   });
 });

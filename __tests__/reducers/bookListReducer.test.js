@@ -2,7 +2,8 @@ import bookListReducer from '../../src/reducers/bookListReducer';
 import {
   FETCH_BOOK_LIST,
   FETCH_BOOK_LIST_SUCCESS,
-  FETCH_BOOK_LIST_ERROR
+  FETCH_BOOK_LIST_ERROR,
+  UPDATE_BOOK_LIST_RATE_DATA
 } from '../../src/actions/types';
 
 describe('bookListReducer tests', () => {
@@ -51,6 +52,26 @@ describe('bookListReducer tests', () => {
     })).toEqual({
       loading: false,
       list: null
+    });
+  });
+
+  it('should not change state, when no action dispatched', () => {
+    expect(bookListReducer()).toEqual({
+      loading: false,
+      list: null
+    });
+  });
+
+  it('should update rating data of precise book', () => {
+    expect(bookListReducer({
+      loading: false,
+      list: [{ _id: '1', name: 'book list', pathName: 'book_list' }, { _id: '2', name: 'css', pathName: 'css' }]
+    }, {
+      type: UPDATE_BOOK_LIST_RATE_DATA,
+      payload: { _id: '1', name: 'js', pathName: 'js' }
+    })).toEqual({
+      loading: false,
+      list: [{ _id: '1', name: 'js', pathName: 'js' }, { _id: '2', name: 'css', pathName: 'css' }]
     });
   });
 });

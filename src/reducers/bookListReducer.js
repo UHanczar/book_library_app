@@ -13,7 +13,7 @@ const initialState = {
   list: null
 };
 
-const bookListReducer = (state: Object = initialState, action: Object): Object => {
+const bookListReducer = (state: Object = initialState, action: Object = {}): Object => {
   switch (action.type) {
     case FETCH_BOOK_LIST:
       return {

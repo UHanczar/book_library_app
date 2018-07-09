@@ -1,7 +1,5 @@
 import bookCategoriesReducer from '../../src/reducers/bookCategoriesReducer';
-import {
-  FETCH_BOOK_CATEGORIES
-} from '../../src/actions/types';
+import { FETCH_BOOK_CATEGORIES } from '../../src/actions/types';
 
 describe('bookCategoriesReducer tests', () => {
   it('should set loading property to true, when fetch request was sent', () => {
@@ -15,5 +13,9 @@ describe('bookCategoriesReducer tests', () => {
     expect(bookCategoriesReducer(null, {
       type: 'FETCH_SOMETHING'
     })).toBe(null);
+  });
+
+  it('should not change state, when nothing was dispatched', () => {
+    expect(bookCategoriesReducer()).toBe(null);
   });
 });

@@ -7,7 +7,7 @@ const defaultState = {
   byRateFilter: false
 };
 
-const filterReducer = (state: Object = defaultState, action: { type: string }) => {
+const filterReducer = (state: Object = defaultState, action: Object = {}) => {
   switch (action.type) {
     case FILTER_BY_DATE:
       return {

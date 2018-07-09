@@ -15,16 +15,22 @@ const CheckAuthentication = (ComposedComponent: any) => {
   };
 
   class Authentication extends Component<Props> {
+    constructor(props) {
+      super(props);
+
+      this.state = {};
+    }
     componentDidMount() {
       if (this.props.authenticated) {
         this.props.history.replace('/');
       }
     }
 
-    componentWillUpdate(nextProps) {
-      if (nextProps.authenticated) {
-        this.props.history.replace('/');
+    static getDerivedStateFromProps(props: any, state: any) {
+      if (props.authenticated) {
+        props.history.replace('/');
       }
+      return null;
     }
 
     render() {

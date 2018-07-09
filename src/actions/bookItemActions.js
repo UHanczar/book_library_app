@@ -74,15 +74,18 @@ export const rateItem = (rating: string): ThunkAction => async (dispatch: Dispat
         payload: ratedBook.data.ratingData
       });
     } else {
+      dispatch({
+        type: RATE_ITEM_ERROR
+      });
       const errorMessage = flashErrorMessage(ratedBook.data.message);
       dispatch(errorMessage);
     }
   } catch (error) {
-    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch({
       type: RATE_ITEM_ERROR
     });
 
+    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch(errorMessage);
   }
 };
@@ -105,15 +108,19 @@ export const assignItem = (bookId: string, userId: string): ThunkAction => async
         payload: assignedBook.data.book
       });
     } else {
+      dispatch({
+        type: ASSIGN_BOOK_ERROR
+      });
+
       const errorMessage = flashErrorMessage(assignedBook.data.message);
       dispatch(errorMessage);
     }
   } catch (error) {
-    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch({
       type: ASSIGN_BOOK_ERROR
     });
 
+    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch(errorMessage);
   }
 };
@@ -136,15 +143,19 @@ export const unassignItem = (bookId: string): ThunkAction => async (dispatch: Di
         payload: unassignedBook.data.book
       });
     } else {
+      dispatch({
+        type: UNASSIGN_BOOK_ERROR
+      });
+
       const errorMessage = flashErrorMessage(unassignedBook.data.message);
       dispatch(errorMessage);
     }
   } catch (error) {
-    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch({
       type: UNASSIGN_BOOK_ERROR
     });
 
+    const errorMessage = flashErrorMessage('There is an error occured.');
     dispatch(errorMessage);
   }
 };

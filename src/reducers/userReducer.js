@@ -18,35 +18,23 @@ const initialState = {
   userList: null
 };
 
-const userReducer = (state: Object = initialState, action: {type: string, payload?: any }) => {
+const userReducer = (state: Object = initialState, action: Object = {}) => {
   switch (action.type) {
     case LOGIN_USER:
-      return {
-        ...state,
-        loading: true
-      };
-    case LOGIN_USER_SUCCESS:
-      return {
-        loading: false,
-        userData: action.payload,
-        authenticated: true
-      };
-    case LOGIN_USER_ERROR:
-      return {
-        ...state,
-        loading: false
-      };
     case CHECK_USER:
       return {
         ...state,
         loading: true
       };
+    case LOGIN_USER_SUCCESS:
     case CHECK_USER_SUCCESS:
       return {
+        ...state,
         loading: false,
         userData: action.payload,
         authenticated: true
       };
+    case LOGIN_USER_ERROR:
     case CHECK_USER_ERROR:
       return {
         ...state,

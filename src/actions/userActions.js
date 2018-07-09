@@ -15,7 +15,7 @@ import {
   LOAD_USER_LIST_ERROR
 } from './types';
 
-const loadUserList = async (dispatch) => {
+export const loadUserList = async (dispatch) => {
   try {
     dispatch({
       type: LOAD_USER_LIST

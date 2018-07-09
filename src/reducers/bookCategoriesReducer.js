@@ -2,7 +2,7 @@
 
 import { FETCH_BOOK_CATEGORIES } from '../actions/types';
 
-const bookCategoriesReducer = (state: any = null, action: Object): any[] => {
+const bookCategoriesReducer = (state: any = null, action: Object = {}): any[] => {
   switch (action.type) {
     case FETCH_BOOK_CATEGORIES:
       return action.payload.sort((a, b) => {

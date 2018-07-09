@@ -20,7 +20,7 @@ const initialState = {
   book: null
 };
 
-const bookItemReducer = (state: Object = initialState, action: Object): Object => {
+const bookItemReducer = (state: Object = initialState, action: Object = {}): Object => {
   switch (action.type) {
     case FETCH_BOOK_ITEM:
       return {

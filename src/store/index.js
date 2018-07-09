@@ -11,10 +11,12 @@ const initialState = {};
 
 let middleware = [thunk, flashMiddleware()];
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'production') {
   middleware = [...middleware, logger];
 }
 
+/* istanbul ignore next */
 const store: Object = createStore(
   rootReducer,
   initialState,

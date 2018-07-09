@@ -1,5 +1,8 @@
+// @flow
+
 import axios from 'axios';
 import { flashErrorMessage } from 'redux-flash';
+import type { Action, ThunkAction, Dispatch, GetState } from '../models/flowTypes';
 
 import { api } from '../../config/config';
 import {
@@ -18,7 +21,7 @@ import {
   UNASSIGN_BOOK_ERROR
 } from '../actions/types';
 
-export const getBookItem = bookId => async (dispatch) => {
+export const getBookItem = (bookId: string): ThunkAction => async (dispatch: Dispatch) => {
   try {
     dispatch({
       type: FETCH_BOOK_ITEM
@@ -43,11 +46,11 @@ export const getBookItem = bookId => async (dispatch) => {
 };
 
 
-export const removeBookItem = () => ({
+export const removeBookItem = (): Action => ({
   type: REMOVE_ITEM
 });
 
-export const rateItem = rating => async (dispatch, getState) => {
+export const rateItem = (rating: string): ThunkAction => async (dispatch: Dispatch, getState: GetState) => {
   try {
     dispatch({
       type: RATE_ITEM
@@ -84,7 +87,7 @@ export const rateItem = rating => async (dispatch, getState) => {
   }
 };
 
-export const assignItem = (bookId, userId) => async (dispatch) => {
+export const assignItem = (bookId: string, userId: string): ThunkAction => async (dispatch: Dispatch) => {
   try {
     dispatch({
       type: ASSIGN_BOOK
@@ -115,7 +118,7 @@ export const assignItem = (bookId, userId) => async (dispatch) => {
   }
 };
 
-export const unassignItem = bookId => async (dispatch) => {
+export const unassignItem = (bookId: string): ThunkAction => async (dispatch: Dispatch) => {
   try {
     dispatch({
       type: UNASSIGN_BOOK

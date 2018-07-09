@@ -4,15 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { userInterface } from '../../models/reactPropTypes';
-import type { userInterfaceFlow } from '../../models/flowTypes';
+import type { UserInterfaceFlow } from '../../models/flowTypes';
 
 import './book-management.scss';
 
 const BookManagement = (props: {
-  userList: Array<userInterfaceFlow>,
+  userList: Array<UserInterfaceFlow>,
   assigning: boolean,
   isAvailable: boolean,
-  currentReader: userInterfaceFlow,
+  currentReader: UserInterfaceFlow,
   id: string,
   assignItem: Function,
   unassignItem: Function

@@ -1,3 +1,5 @@
+// @flow
+
 import { FILTER_BY_DATE, FILTER_BY_RATE } from '../actions/types';
 
 const defaultState = {
@@ -5,7 +7,7 @@ const defaultState = {
   byRateFilter: false
 };
 
-const filterReducer = (state = defaultState, action) => {
+const filterReducer = (state: Object = defaultState, action: { type: string }) => {
   switch (action.type) {
     case FILTER_BY_DATE:
       return {

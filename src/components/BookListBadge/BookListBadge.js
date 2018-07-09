@@ -7,13 +7,13 @@ import uniqid from 'uniqid';
 import StarRatings from 'react-star-ratings';
 
 import { bookInterface } from '../../models/reactPropTypes';
-import type { bookInterfaceFlow } from '../../models/flowTypes';
+import type { BookInterfaceFlow } from '../../models/flowTypes';
 import { calculateBookRating } from '../../helpers/helpers';
 
 import './book-list-badge.scss';
 
 const BookListBadge = (props: {
-  bookList: Array<bookInterfaceFlow>
+  bookList: Array<BookInterfaceFlow>
 }) => (
   <div className='badge__container'>
     <div className='collection'>

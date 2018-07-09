@@ -1,3 +1,5 @@
+// @flow
+
 import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
@@ -16,7 +18,7 @@ const initialState = {
   userList: null
 };
 
-const userReducer = (state = initialState, action) => {
+const userReducer = (state: Object = initialState, action: {type: string, payload?: any }) => {
   switch (action.type) {
     case LOGIN_USER:
       return {

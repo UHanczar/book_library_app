@@ -1,32 +1,34 @@
+// @flow
+
 // auth actions
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR';
+export const LOGIN_USER: string = 'LOGIN_USER';
+export const LOGIN_USER_SUCCESS: string = 'LOGIN_USER_SUCCESS';
+export const LOGIN_USER_ERROR: string = 'LOGIN_USER_ERROR';
 
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const LOGOUT_USER: string = 'LOGOUT_USER';
 
-export const CHECK_USER = 'CHECK_USER';
-export const CHECK_USER_SUCCESS = 'CHECK_USER_SUCCESS';
-export const CHECK_USER_ERROR = 'CHECK_USER_ERROR';
+export const CHECK_USER: string = 'CHECK_USER';
+export const CHECK_USER_SUCCESS: string = 'CHECK_USER_SUCCESS';
+export const CHECK_USER_ERROR: string = 'CHECK_USER_ERROR';
 
-export const LOAD_USER_LIST = 'LOAD_USER_LIST';
-export const LOAD_USER_LIST_SUCCESS = 'LOAD_USER_LIST_SUCCESS';
-export const LOAD_USER_LIST_ERROR = 'LOAD_USER_LIST_ERROR';
+export const LOAD_USER_LIST: string = 'LOAD_USER_LIST';
+export const LOAD_USER_LIST_SUCCESS: string = 'LOAD_USER_LIST_SUCCESS';
+export const LOAD_USER_LIST_ERROR: string = 'LOAD_USER_LIST_ERROR';
 
 // bookCategories Actions
-export const FETCH_BOOK_CATEGORIES = 'FETCH_BOOK_CATEGORIES';
+export const FETCH_BOOK_CATEGORIES: string = 'FETCH_BOOK_CATEGORIES';
 
 // bookList Actions
-export const FETCH_BOOK_LIST = 'FETCH_BOOK_LIST';
-export const FETCH_BOOK_LIST_SUCCESS = 'FETCH_BOOK_LIST_SUCCESS';
-export const FETCH_BOOK_LIST_ERROR = 'FETCH_BOOK_LIST_ERROR';
+export const FETCH_BOOK_LIST: string = 'FETCH_BOOK_LIST';
+export const FETCH_BOOK_LIST_SUCCESS: string = 'FETCH_BOOK_LIST_SUCCESS';
+export const FETCH_BOOK_LIST_ERROR: string = 'FETCH_BOOK_LIST_ERROR';
 
-export const UPDATE_BOOK_LIST_RATE_DATA = 'UPDATE_BOOK_LIST_RATE_DATA';
+export const UPDATE_BOOK_LIST_RATE_DATA: string = 'UPDATE_BOOK_LIST_RATE_DATA';
 
 // bookItem Actions
-export const FETCH_BOOK_ITEM = 'FETCH_BOOK_ITEM';
-export const FETCH_BOOK_ITEM_SUCCESS = 'FETCH_BOOK_ITEM_SUCCESS';
-export const FETCH_BOOK_ITEM_ERROR = 'FETCH_BOOK_ITEM_ERROR';
+export const FETCH_BOOK_ITEM: string = 'FETCH_BOOK_ITEM';
+export const FETCH_BOOK_ITEM_SUCCESS: string = 'FETCH_BOOK_ITEM_SUCCESS';
+export const FETCH_BOOK_ITEM_ERROR: string = 'FETCH_BOOK_ITEM_ERROR';
 
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 

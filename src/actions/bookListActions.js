@@ -1,3 +1,5 @@
+// @flow
+
 import axios from 'axios';
 import { flashErrorMessage } from 'redux-flash';
 
@@ -8,8 +10,14 @@ import {
   FETCH_BOOK_LIST_ERROR,
   UPDATE_BOOK_LIST_RATE_DATA
 } from '../actions/types';
+import type {
+  Action,
+  ThunkAction,
+  Dispatch,
+  BookInterfaceFlow
+} from '../models/flowTypes';
 
-export const fetchBookList = () => async (dispatch) => {
+export const fetchBookList = (): ThunkAction => async (dispatch: Dispatch) => {
   try {
     dispatch({
       type: FETCH_BOOK_LIST
@@ -31,7 +39,7 @@ export const fetchBookList = () => async (dispatch) => {
   }
 };
 
-export const updateBookListRateData = book => ({
+export const updateBookListRateData = (book: BookInterfaceFlow): Action => ({
   type: UPDATE_BOOK_LIST_RATE_DATA,
   payload: book
 });

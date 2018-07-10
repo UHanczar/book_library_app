@@ -23,7 +23,8 @@
       "!**/node_modules/**",
       "!**/vendor/**",
       "!**/src/models/**",
-      "!**/src/reducers/index.js"
+      "!**/src/reducers/index.js",
+      "!**/src/index.js"
     ]
   },
   "dependencies": {

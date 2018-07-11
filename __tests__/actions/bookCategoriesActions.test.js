@@ -14,10 +14,12 @@ describe('book categories actions', () => {
     ];
 
 
-    axios.get = jest.fn(url => Promise.resolve({ data: {
-      success: true,
-      bookCategories: ['book']
-    } }));
+    axios.get = jest.fn(url => Promise.resolve({
+      data: {
+        success: true,
+        bookCategories: ['book']
+      }
+    }));
 
     const dispatch = jest.fn();
     const getState = jest.fn(() => {
@@ -30,9 +32,11 @@ describe('book categories actions', () => {
   });
 
   it('should not call dispatch in case of book categories not loading', async () => {
-    axios.get = jest.fn(url => Promise.resolve({ data: {
-      success: false
-    } }));
+    axios.get = jest.fn(url => Promise.resolve({
+      data: {
+        success: false
+      }
+    }));
 
     const dispatch = jest.fn();
     const getState = jest.fn(() => {

@@ -24,10 +24,12 @@ describe('book item actions', () => {
       ];
 
 
-      axios.get = jest.fn(url => Promise.resolve({ data: {
-        success: true,
-        book: { name: 'js' }
-      } }));
+      axios.get = jest.fn(url => Promise.resolve({
+        data: {
+          success: true,
+          book: { name: 'js' }
+        }
+      }));
 
       const dispatch = jest.fn();
       const getState = jest.fn(() => {
@@ -51,9 +53,11 @@ describe('book item actions', () => {
         }
       ];
 
-      axios.get = jest.fn(url => Promise.resolve({ data: {
-        success: false
-      } }));
+      axios.get = jest.fn(url => Promise.resolve({
+        data: {
+          success: false
+        }
+      }));
 
       const dispatch = jest.fn();
       const getState = jest.fn(() => {

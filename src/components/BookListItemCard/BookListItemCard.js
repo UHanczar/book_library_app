@@ -24,6 +24,10 @@ const BookListItem = (props: {
       />
     </div>
     <div className='card-content'>
+      {props.item.isAvailable ?
+        null :
+        (<p className='card-content-availability'>taken</p>)
+      }
       <p className='card-content-title'>{props.item.name}</p>
       <p className='card-content-authors'>
         {props.item.authors.map((author, i) => (

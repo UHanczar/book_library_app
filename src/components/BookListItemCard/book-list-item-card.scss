@@ -26,8 +26,18 @@
 
   .card-content {
     padding-bottom: 5px;
+    position: relative;
     @media only screen and (min-width: 768px) {
       padding-bottom: 10px;
+    }
+
+    .card-content-availability {
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      font-size: 11px;
+      font-weight: 400;
+      color: #e6250a;
     }
 
     .card-content-title {
@@ -37,14 +47,14 @@
       text-overflow: ellipsis;
       padding-bottom: 5px;
     }
-  
+
     .card-content-authors {
       font-size: 12px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       padding-bottom: 10px;
-  
+
       span {
         color: #b1b1b1;
       }

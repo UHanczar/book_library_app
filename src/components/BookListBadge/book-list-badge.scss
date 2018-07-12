@@ -10,7 +10,8 @@
     .collection__title,
     .collection__publisher,
     .collection__year,
-    .collection__rating {
+    .collection__rating,
+    .collection__availability {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -44,14 +45,23 @@
     }
 
     .collection__year {
+      width: 5%;
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .collection__availability {
       width: 10%;
+      color: #e6250a;
+      padding-left: 30px;
       @media only screen and (max-width: 768px) {
         display: none;
       }
     }
 
     .collection__rating {
-      width: 15%;
+      width: 10%;
       display: flex;
       justify-content: center;
       align-items: center;

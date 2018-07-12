@@ -39,6 +39,7 @@ const BookListBadge = (props: {
           <p className='collection__title'>{item.name}</p>
           <p className='collection__publisher'>{item.publisher}</p>
           <p className='collection__year'>{item.year}</p>
+          <p className='collection__availability'>{item.isAvailable ? null : 'taken'}</p>
           <div className='badge collection__rating'>
             <StarRatings
               rating={parseFloat(calculateBookRating(item.ratingData))}

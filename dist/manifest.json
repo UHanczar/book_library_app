@@ -1,7 +1,7 @@
 {
- "name": "Book Library App",
- "short_name": "GKB",
- "theme_color": "#F2F2F2",
- "background_color": "#F2F2F2",
- "display": "fullscreen"
+  "name": "Book Library App",
+  "short_name": "Book Library App",
+  "theme_color": "#F2F2F2",
+  "background_color": "#F2F2F2",
+  "display": "fullscreen"
 }

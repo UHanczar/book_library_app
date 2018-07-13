@@ -14,7 +14,8 @@ describe('BookListItemBadge tests', () => {
         name: 'name',
         authors: ['author'],
         ratingData: [{ rating: '2' }, { rating: '3' }],
-        _id: '1'
+        _id: '1',
+        isAvailable: true
       }];
       const options = new ReactRouterEnzymeContext();
       wrapper = (bl = bookList) => mount(
@@ -41,7 +42,8 @@ describe('BookListItemBadge tests', () => {
         name: 'name',
         authors: ['author1', 'author2'],
         ratingData: [{ rating: '2' }, { rating: '3' }],
-        _id: '1'
+        _id: '1',
+        isAvailable: false
       }];
       const options = new ReactRouterEnzymeContext();
       wrapper = (bl = bookList) => mount(
